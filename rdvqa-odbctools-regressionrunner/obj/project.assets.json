@@ -1,0 +1,231 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Microsoft.NETCore.Platforms/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "System.Data.Odbc/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Data.Odbc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Data.Odbc.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/freebsd/lib/netcoreapp2.0/System.Data.Odbc.dll": {
+            "assetType": "runtime",
+            "rid": "freebsd"
+          },
+          "runtimes/linux/lib/netcoreapp2.0/System.Data.Odbc.dll": {
+            "assetType": "runtime",
+            "rid": "linux"
+          },
+          "runtimes/osx/lib/netcoreapp2.0/System.Data.Odbc.dll": {
+            "assetType": "runtime",
+            "rid": "osx"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Data.Odbc.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "rdvaqa-odbctools-base/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "System.Data.Odbc": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/rdvaqa-odbctools-base.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/rdvaqa-odbctools-base.dll": {}
+        }
+      },
+      "rdvqa-odbctools-baselinebuilder/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "rdvaqa-odbctools-base": "1.0.0",
+          "rdvqa-odbctools-hashgenerator": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/rdvqa-odbctools-baselinebuilder.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/rdvqa-odbctools-baselinebuilder.dll": {}
+        }
+      },
+      "rdvqa-odbctools-hashgenerator/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/rdvqa-odbctools-hashgenerator.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/rdvqa-odbctools-hashgenerator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "sha512": "VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Data.Odbc/5.0.0": {
+      "sha512": "j4WsYGmcD7m1D0Tc3N7HqWqcdUHNn9+kdXh9ODTWEsOGrAvALf+BgRStd7L0/O/zDS0R4Uu9vNM8UY6EnK+WYw==",
+      "type": "package",
+      "path": "system.data.odbc/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Data.Odbc.dll",
+        "lib/net461/System.Data.Odbc.xml",
+        "lib/netstandard2.0/System.Data.Odbc.dll",
+        "lib/netstandard2.0/System.Data.Odbc.xml",
+        "ref/net461/System.Data.Odbc.dll",
+        "ref/net461/System.Data.Odbc.xml",
+        "ref/netstandard2.0/System.Data.Odbc.dll",
+        "ref/netstandard2.0/System.Data.Odbc.xml",
+        "runtimes/freebsd/lib/netcoreapp2.0/System.Data.Odbc.dll",
+        "runtimes/freebsd/lib/netcoreapp2.0/System.Data.Odbc.xml",
+        "runtimes/linux/lib/netcoreapp2.0/System.Data.Odbc.dll",
+        "runtimes/linux/lib/netcoreapp2.0/System.Data.Odbc.xml",
+        "runtimes/osx/lib/netcoreapp2.0/System.Data.Odbc.dll",
+        "runtimes/osx/lib/netcoreapp2.0/System.Data.Odbc.xml",
+        "runtimes/win/lib/net461/System.Data.Odbc.dll",
+        "runtimes/win/lib/net461/System.Data.Odbc.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Data.Odbc.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Data.Odbc.xml",
+        "system.data.odbc.5.0.0.nupkg.sha512",
+        "system.data.odbc.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "rdvaqa-odbctools-base/1.0.0": {
+      "type": "project",
+      "path": "../rdvaqa-odbctools-base/rdvaqa-odbctools-base.csproj",
+      "msbuildProject": "../rdvaqa-odbctools-base/rdvaqa-odbctools-base.csproj"
+    },
+    "rdvqa-odbctools-baselinebuilder/1.0.0": {
+      "type": "project",
+      "path": "../rdvqa-odbctools-baselinebuilder/rdvqa-odbctools-baselinebuilder.csproj",
+      "msbuildProject": "../rdvqa-odbctools-baselinebuilder/rdvqa-odbctools-baselinebuilder.csproj"
+    },
+    "rdvqa-odbctools-hashgenerator/1.0.0": {
+      "type": "project",
+      "path": "../rdvqa-odbctools-hashgenerator/rdvqa-odbctools-hashgenerator.csproj",
+      "msbuildProject": "../rdvqa-odbctools-hashgenerator/rdvqa-odbctools-hashgenerator.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "rdvaqa-odbctools-base >= 1.0.0",
+      "rdvqa-odbctools-baselinebuilder >= 1.0.0",
+      "rdvqa-odbctools-hashgenerator >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\skrishna\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-regressionrunner\\rdvqa-odbctools-regressionrunner.csproj",
+      "projectName": "rdvqa-odbctools-regressionrunner",
+      "projectPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-regressionrunner\\rdvqa-odbctools-regressionrunner.csproj",
+      "packagesPath": "C:\\Users\\skrishna\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-regressionrunner\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\skrishna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvaqa-odbctools-base\\rdvaqa-odbctools-base.csproj": {
+              "projectPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvaqa-odbctools-base\\rdvaqa-odbctools-base.csproj"
+            },
+            "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-baselinebuilder\\rdvqa-odbctools-baselinebuilder.csproj": {
+              "projectPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-baselinebuilder\\rdvqa-odbctools-baselinebuilder.csproj"
+            },
+            "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-hashgenerator\\rdvqa-odbctools-hashgenerator.csproj": {
+              "projectPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-hashgenerator\\rdvqa-odbctools-hashgenerator.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

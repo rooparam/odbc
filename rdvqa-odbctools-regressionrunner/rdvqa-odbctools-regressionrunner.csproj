@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Rocket.RDVQA.Tools.ODBC</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\rdvaqa-odbctools-base\rdvaqa-odbctools-base.csproj" />
+    <ProjectReference Include="..\rdvqa-odbctools-baselinebuilder\rdvqa-odbctools-baselinebuilder.csproj" />
+    <ProjectReference Include="..\rdvqa-odbctools-hashgenerator\rdvqa-odbctools-hashgenerator.csproj" />
+  </ItemGroup>
+
+</Project>
