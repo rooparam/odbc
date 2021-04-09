@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "0hiPUjB8oEA5UksP2rjhL2oUx8i+ABvbDQDI50lyx8bbgcuSCDb11dCHk8x6Byo11DUeIqtxWBsG2mz9h81qKQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-baselinebuilder\\rdvqa-odbctools-baselinebuilder.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\skrishna\\.nuget\\packages\\system.data.odbc\\5.0.0\\system.data.odbc.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

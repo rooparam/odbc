@@ -1,10 +1,6 @@
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\obj\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.AssemblyInfoInputs.cache
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\obj\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.AssemblyInfo.cs
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\obj\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.csproj.CoreCompileInputs.cache
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvaqa-odbctools-base.deps.json
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvaqa-odbctools-base.runtimeconfig.json
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvaqa-odbctools-base.runtimeconfig.dev.json
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvaqa-odbctools-base.exe
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.exe
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.deps.json
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.runtimeconfig.json
@@ -16,12 +12,12 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebu
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\runtimes\linux\lib\netcoreapp2.0\System.Data.Odbc.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\runtimes\osx\lib\netcoreapp2.0\System.Data.Odbc.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Data.Odbc.dll
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvaqa-odbctools-base.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvqa-odbctools-hashgenerator.dll
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvaqa-odbctools-base.pdb
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\rdvqa-odbctools-hashgenerator.pdb
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\obj\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.csprojAssemblyReference.cache
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\obj\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.csproj.CopyComplete
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\obj\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\obj\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.pdb
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\obj\Debug\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.genruntimeconfig.cache
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\baselineconfig.xml
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-baselinebuilder\bin\Debug\netcoreapp3.1\baselineconfig.xsd

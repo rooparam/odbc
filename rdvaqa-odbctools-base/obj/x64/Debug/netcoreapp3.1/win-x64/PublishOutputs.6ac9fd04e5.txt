@@ -1,0 +1,5 @@
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\publish\rdvaqa-odbctools-base.pdb
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\publish\rdvqa-odbctools-baselinebuilder.pdb
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\publish\rdvqa-odbctools-regressionrunner.pdb
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\publish\rdvqa-odbctools-hashgenerator.pdb
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\publish\rdvaqa-odbctools-base.exe

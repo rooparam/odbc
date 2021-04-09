@@ -178,7 +178,7 @@ namespace Rocket.RDVQA.Tools.ODBC
         private static void WriteBaselineFileAsync(string path, string connectionString, List<SQLTestCase> sqlTestcases)
         {            
             using StreamWriter fileStream = new StreamWriter (path);
-            fileStream.WriteLine(connectionString);
+            fileStream.WriteLine("#"+connectionString);
             foreach (SQLTestCase sqlTestcase in sqlTestcases)
             {
                 fileStream.WriteLine(sqlTestcase.ToString());

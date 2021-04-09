@@ -1,0 +1,9 @@
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\bin\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.deps.json
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\bin\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.dll
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\bin\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.pdb
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.csprojAssemblyReference.cache
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.AssemblyInfoInputs.cache
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.AssemblyInfo.cs
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.csproj.CoreCompileInputs.cache
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.dll
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.pdb

@@ -7,9 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\rdvaqa-odbctools-base\rdvaqa-odbctools-base.csproj" />
-    <ProjectReference Include="..\rdvqa-odbctools-baselinebuilder\rdvqa-odbctools-baselinebuilder.csproj" />
+    <PackageReference Include="System.Data.Odbc" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\rdvqa-odbctools-hashgenerator\rdvqa-odbctools-hashgenerator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="testconfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="testconfig.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

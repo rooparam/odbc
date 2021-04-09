@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "2BLN2YO0DEpAJH3XieZre9M/EGt7tWOZU1RY9ke48toIy3ndJxFqrXw0IHxH1IImJ1NrqA85MevNFz1guQQimA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvaqa-odbctools-base\\rdvaqa-odbctools-base.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\skrishna\\.nuget\\packages\\system.data.odbc\\5.0.0\\system.data.odbc.5.0.0.nupkg.sha512",
+    "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\5.0.4\\microsoft.netcore.app.runtime.win-x86.5.0.4.nupkg.sha512",
+    "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\5.0.4\\microsoft.windowsdesktop.app.runtime.win-x86.5.0.4.nupkg.sha512",
+    "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\5.0.4\\microsoft.aspnetcore.app.runtime.win-x86.5.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

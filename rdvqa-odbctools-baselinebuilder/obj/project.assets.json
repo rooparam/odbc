@@ -41,19 +41,6 @@
           }
         }
       },
-      "rdvaqa-odbctools-base/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "System.Data.Odbc": "5.0.0"
-        },
-        "compile": {
-          "bin/placeholder/rdvaqa-odbctools-base.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/rdvaqa-odbctools-base.dll": {}
-        }
-      },
       "rdvqa-odbctools-hashgenerator/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -119,11 +106,6 @@
         "version.txt"
       ]
     },
-    "rdvaqa-odbctools-base/1.0.0": {
-      "type": "project",
-      "path": "../rdvaqa-odbctools-base/rdvaqa-odbctools-base.csproj",
-      "msbuildProject": "../rdvaqa-odbctools-base/rdvaqa-odbctools-base.csproj"
-    },
     "rdvqa-odbctools-hashgenerator/1.0.0": {
       "type": "project",
       "path": "../rdvqa-odbctools-hashgenerator/rdvqa-odbctools-hashgenerator.csproj",
@@ -132,7 +114,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "rdvaqa-odbctools-base >= 1.0.0",
+      "System.Data.Odbc >= 5.0.0",
       "rdvqa-odbctools-hashgenerator >= 1.0.0"
     ]
   },
@@ -168,9 +150,6 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvaqa-odbctools-base\\rdvaqa-odbctools-base.csproj": {
-              "projectPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvaqa-odbctools-base\\rdvaqa-odbctools-base.csproj"
-            },
             "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-hashgenerator\\rdvqa-odbctools-hashgenerator.csproj": {
               "projectPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-hashgenerator\\rdvqa-odbctools-hashgenerator.csproj"
             }
@@ -186,6 +165,12 @@
     "frameworks": {
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
+        "dependencies": {
+          "System.Data.Odbc": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

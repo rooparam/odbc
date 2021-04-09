@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <!--Expected format of testcase in a testsuite is TestcaseID;TestCaseType;TestResultHash;TestQuery;VerificationQuery(only for TestCaseTypes Insert & Delete)-->
+  <regession_suite name="Suite 1" description="something" >
+    <input>C:\Users\skrishna\OneDrive - Rocket Software, Inc\#01 Projects\#012 DVM\#10 Regression\#00 Baseline\AVZ\#02 Output\20210318120000</input>
+    <output>C:\Users\skrishna\OneDrive - Rocket Software, Inc\#01 Projects\#012 DVM\#10 Regression\#00 Baseline\AVZ\#02 Output\20210318120001</output>   
+  </regession_suite>
+  <regession_suite>
+    <input>C:\Users\skrishna\OneDrive - Rocket Software, Inc\#01 Projects\#012 DVM\#10  Regression\#11 Inputs\ODBC_3.1x64</input>
+    <output>C:\Users\skrishna\OneDrive - Rocket Software, Inc\#01 Projects\#012 DVM\#10  Regression\#22 Results\ODBC_3.1x64</output>
+  </regession_suite>
+</config>

@@ -4,11 +4,24 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Rocket.RDVQA.Tools.ODBC</RootNamespace>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\rdvaqa-odbctools-base\rdvaqa-odbctools-base.csproj" />
+    <PackageReference Include="System.Data.Odbc" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\rdvqa-odbctools-hashgenerator\rdvqa-odbctools-hashgenerator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="baselineconfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="baselineconfig.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

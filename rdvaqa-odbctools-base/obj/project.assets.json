@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0": {
       "Microsoft.NETCore.Platforms/5.0.0": {
         "type": "package",
         "compile": {
@@ -39,6 +39,44 @@
             "assetType": "runtime",
             "rid": "win"
           }
+        }
+      },
+      "rdvqa-odbctools-baselinebuilder/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "System.Data.Odbc": "5.0.0",
+          "rdvqa-odbctools-hashgenerator": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/rdvqa-odbctools-baselinebuilder.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/rdvqa-odbctools-baselinebuilder.dll": {}
+        }
+      },
+      "rdvqa-odbctools-hashgenerator/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/rdvqa-odbctools-hashgenerator.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/rdvqa-odbctools-hashgenerator.dll": {}
+        }
+      },
+      "rdvqa-odbctools-regressionrunner/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "System.Data.Odbc": "5.0.0",
+          "rdvqa-odbctools-hashgenerator": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/rdvqa-odbctools-regressionrunner.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/rdvqa-odbctools-regressionrunner.dll": {}
         }
       }
     }
@@ -95,11 +133,29 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "rdvqa-odbctools-baselinebuilder/1.0.0": {
+      "type": "project",
+      "path": "../rdvqa-odbctools-baselinebuilder/rdvqa-odbctools-baselinebuilder.csproj",
+      "msbuildProject": "../rdvqa-odbctools-baselinebuilder/rdvqa-odbctools-baselinebuilder.csproj"
+    },
+    "rdvqa-odbctools-hashgenerator/1.0.0": {
+      "type": "project",
+      "path": "../rdvqa-odbctools-hashgenerator/rdvqa-odbctools-hashgenerator.csproj",
+      "msbuildProject": "../rdvqa-odbctools-hashgenerator/rdvqa-odbctools-hashgenerator.csproj"
+    },
+    "rdvqa-odbctools-regressionrunner/1.0.0": {
+      "type": "project",
+      "path": "../rdvqa-odbctools-regressionrunner/rdvqa-odbctools-regressionrunner.csproj",
+      "msbuildProject": "../rdvqa-odbctools-regressionrunner/rdvqa-odbctools-regressionrunner.csproj"
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
-      "System.Data.Odbc >= 5.0.0"
+    "net5.0": [
+      "System.Data.Odbc >= 5.0.0",
+      "rdvqa-odbctools-baselinebuilder >= 1.0.0",
+      "rdvqa-odbctools-hashgenerator >= 1.0.0",
+      "rdvqa-odbctools-regressionrunner >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -124,16 +180,26 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-baselinebuilder\\rdvqa-odbctools-baselinebuilder.csproj": {
+              "projectPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-baselinebuilder\\rdvqa-odbctools-baselinebuilder.csproj"
+            },
+            "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-hashgenerator\\rdvqa-odbctools-hashgenerator.csproj": {
+              "projectPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-hashgenerator\\rdvqa-odbctools-hashgenerator.csproj"
+            },
+            "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-regressionrunner\\rdvqa-odbctools-regressionrunner.csproj": {
+              "projectPath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-regressionrunner\\rdvqa-odbctools-regressionrunner.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -143,8 +209,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0": {
+        "targetAlias": "net5.0",
         "dependencies": {
           "System.Data.Odbc": {
             "target": "Package",

@@ -53,7 +53,7 @@ namespace Rocket.RDVQA.Tools.ODBC
             Name = name is null ? "Unnamed Suite" : name;
             InputPath = inputPath;
             OutputPath = outputPath;
-            TestSuites = null;
+            BuildTestSuites();
         }
 
         public string Name { get; private set; }
@@ -63,59 +63,124 @@ namespace Rocket.RDVQA.Tools.ODBC
 
         public List<TestSuite> GetTestSuites()
         {
-            string[] testSuitePaths = Directory.GetFiles(InputPath);
-            string connectionString = null;
-            if (TestSuites is null)
-            {
-                TestSuites = new List<TestSuite>();
-                List<SQLTestCase> sqlTestCases = new List<SQLTestCase>();
-                foreach (string path in testSuitePaths)
-                {
-                    string[] lines = File.ReadAllLines(path);
-                    foreach (string line in lines)
-                    {
-                        // Ignore comments
-                        if (line.Trim().StartsWith("--"))
-                        { continue; }
-                        if (line.Trim().StartsWith('#'))
-                        {
-                            connectionString = line.Trim('#');
-                            continue;
-                        }
-                        string[] testcaseFields = line.Split(";");
-                        if (testcaseFields[1].ToLower().Equals("select"))
-                        {
-                            sqlTestCases.Add(new SQLTestCase(testcaseFields[0], SQLTestCaseType.SELECT, testcaseFields[2], testcaseFields[3], null));
-                        }
-                        else if (testcaseFields[1].ToLower().Equals("delete"))
-                        {
-                            sqlTestCases.Add(new SQLTestCase(testcaseFields[0], SQLTestCaseType.DELETE, testcaseFields[2], testcaseFields[3], testcaseFields[4]));
-                        }
-                        else if (testcaseFields[1].ToLower().Equals("insert"))
-                        {
-                            sqlTestCases.Add(new SQLTestCase(testcaseFields[0], SQLTestCaseType.INSERT, testcaseFields[2], testcaseFields[3], testcaseFields[4]));
-                        }
-                        else
-                        {
-                            Console.Error.WriteLine("Invalide testcase type identified for TC-ID:" + testcaseFields[0]);
-                        }
-                    }
-                    TestSuites.Add(new TestSuite(Path.GetFileNameWithoutExtension(path), connectionString, sqlTestCases));
-                }
-            }
             return TestSuites;
+        }
+        private void BuildTestSuites()
+        {
+            string[] testSuitePaths = Directory.GetFiles(InputPath, "*", SearchOption.AllDirectories);
+            string connectionString = null;
+            TestSuites = new List<TestSuite>();
+            foreach (string path in testSuitePaths)
+            {
+                List<SQLTestCase> sqlTestCases = new List<SQLTestCase>();
+                string[] lines = File.ReadAllLines(path);
+                foreach (string line in lines)
+                {
+                    // Ignore comments
+                    if (line.Trim().StartsWith("--"))
+                    { continue; }
+                    if (line.Trim().StartsWith('#'))
+                    {
+                        connectionString = line.Trim('#');
+                        continue;
+                    }
+                    string[] testcaseFields = line.Split(";");
+                    if (testcaseFields[1].ToLower().Equals("select"))
+                    {
+                        sqlTestCases.Add(new SQLTestCase(testcaseFields[0], SQLTestCaseType.SELECT, testcaseFields[2], testcaseFields[3], null));
+                    }
+                    else if (testcaseFields[1].ToLower().Equals("delete"))
+                    {
+                        sqlTestCases.Add(new SQLTestCase(testcaseFields[0], SQLTestCaseType.DELETE, testcaseFields[2], testcaseFields[3], testcaseFields[4]));
+                    }
+                    else if (testcaseFields[1].ToLower().Equals("insert"))
+                    {
+                        sqlTestCases.Add(new SQLTestCase(testcaseFields[0], SQLTestCaseType.INSERT, testcaseFields[2], testcaseFields[3], testcaseFields[4]));
+                    }
+                    else
+                    {
+                        Console.Error.WriteLine("Invalide testcase type identified for TC-ID:" + testcaseFields[0]);
+                    }
+                }
+                TestSuites.Add(new TestSuite(Path.GetFileNameWithoutExtension(path), connectionString, sqlTestCases));
+            }
         }
         public List<String> GetPassedTestCaseIDs()
         {
             return null;
         }
     }
+    
+    internal class TestCaseExecutionRecord
+    {
+        public TestCaseExecutionRecord(string tcid, string comment, bool pass)
+        {
+            ID = tcid;
+            Comment = comment;
+            Pass = pass;
+        }
+        public string ID { get; private set; }
+        public string Comment { get; set; }
+        public bool Pass { get; set; }
+    }
+    internal class TestSuiteExecutionRecord
+    {
+        private List<TestCaseExecutionRecord> TestCaseExecutionRecords;
+
+        public TestSuiteExecutionRecord(string suiteName)
+        {
+            Name = suiteName;
+        }
+
+        public string Name { get; private set; }
+        public string Comment { get; set; }
+        public int TestCaseCount()
+        {
+            return TestCaseExecutionRecords.Count;
+        }
+
+        public void AddTestCaseExecutionRecord(TestCaseExecutionRecord tceRecord)
+        {
+            TestCaseExecutionRecords.Add(tceRecord);
+        }
+    }
+    internal class RegressionSuiteExecutionRecord
+    {
+        private List<TestSuiteExecutionRecord> TestSuiteExecutionRecords;
+        public RegressionSuiteExecutionRecord(string suiteName)
+        {
+            Name = suiteName;
+        }
+
+        public string Name { get; private set; }
+        public string Comment { get; set; }
+
+        public void AddTestSuiteExecutionRecord(TestSuiteExecutionRecord tseRecord)
+        {
+            TestSuiteExecutionRecords.Add(tseRecord);
+        }
+        public int TestSuiteCount()
+        {
+           return TestSuiteExecutionRecords.Count;
+        }
+
+        public int TestCaseCount()
+        {
+            int _ = 0;
+            foreach(TestSuiteExecutionRecord tseRecord in TestSuiteExecutionRecords)
+            {
+                _ += tseRecord.TestCaseCount();
+            }
+            return _;
+        }
+    }
     internal class RegressionManager
     {
         private List<RegressionSuite> RegressionSuites;
-
+        private List<RegressionSuiteExecutionRecord> RegressionSuiteExecutionRecords;
         public RegressionManager()
         {
+            RegressionSuiteExecutionRecords = new List<RegressionSuiteExecutionRecord>();
         }
 
         /// <summary>
@@ -127,6 +192,19 @@ namespace Rocket.RDVQA.Tools.ODBC
             ValidateConfigXML(configXML);
             BuildRegressionSuites(configXML);
             RunRegression();
+            BuildRegressionReport();
+        }
+
+        private void BuildRegressionReport()
+        {
+            Console.WriteLine(new String('#', 80));
+            Console.WriteLine("#" + "Regression Report".PadLeft(30)+"#".PadLeft(30));
+            Console.WriteLine(new String('#', 80));
+
+            foreach (RegressionSuiteExecutionRecord rseRecord in RegressionSuiteExecutionRecords)
+            {
+
+            }
         }
 
         private void BuildRegressionSuites(string configXML)
@@ -220,15 +298,22 @@ namespace Rocket.RDVQA.Tools.ODBC
         }
     
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void RunRegression()
         {
             string ExecutionMessage = "";
             foreach (RegressionSuite regressionSuite in RegressionSuites)
             {
-                Console.WriteLine("[ Info    ] Excution begins for Regression Suite: {0}.", regressionSuite.Name);
+                RegressionSuiteExecutionRecord rseRecord = new RegressionSuiteExecutionRecord(regressionSuite.Name);
+                Console.WriteLine("[ Info    ] Execution begins for Regression Suite: {0}.", regressionSuite.Name);
                 foreach (TestSuite testSuite in regressionSuite.GetTestSuites())
                 {
-                    Console.WriteLine("[ Info    ] Excution begins for Test Suite: {0}.", testSuite.Name);
+                    // create test suite execution record
+                    TestSuiteExecutionRecord tseRecord = new TestSuiteExecutionRecord(testSuite.Name);
+                    rseRecord.AddTestSuiteExecutionRecord(tseRecord);
+                    Console.WriteLine("[ Info    ] Execution begins for Test Suite: {0}.", testSuite.Name);
                     try
                     {
                         // build connection
@@ -237,6 +322,9 @@ namespace Rocket.RDVQA.Tools.ODBC
                         odbcCONN.Open();
                         foreach (SQLTestCase testCase in testSuite.TestCases)
                         {
+                            //
+                            TestCaseExecutionRecord tceRecord = new TestCaseExecutionRecord(testCase.ID, "Testing Commenced", false);
+                            tseRecord.AddTestCaseExecutionRecord(tceRecord);
                             ExecutionMessage = "";
                             try
                             {
@@ -269,6 +357,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                                 {
                                     fileWriter.Write(ex.Message);
                                     ExecutionMessage = ex.Message;
+                                    tceRecord.Comment = "Execution ended with accepted exception: "+ex.Message;
                                 }
                                 tempDataStream.Position = 0;
                                 String hash = HashGenerator.GenerateSha256(tempDataStream);
@@ -276,6 +365,8 @@ namespace Rocket.RDVQA.Tools.ODBC
                                 {
                                     //TestExecutionResult.Add(new SQLTestResults(testCase.ID, true, ExecutionMessage));
                                     Console.WriteLine(testCase.ID + " PASS");
+                                    tceRecord.Pass = true;
+                                    tceRecord.Comment = "Execution Successful";
                                     //CountPass++;
                                 }
                                 else
@@ -283,25 +374,32 @@ namespace Rocket.RDVQA.Tools.ODBC
                                     //TestExecutionResult.Add(new SQLTestResults(testCase.ID, false, "Hash mismatch"));
                                     Console.Error.WriteLine(testCase.ID + " FAIL '" + testCase.Hash + "' != '" + hash + "'");
                                     //CountFail++;
+                                    tceRecord.Comment = "Execution Fail. Hash mismatch";
                                 }
+                                
                                 odbcCMD.Dispose();
                                 resultSet.Clear();
                                 tempDataStream.Close();
                             }
-                            catch (Exception e)
+                            catch (Exception ex)
                             {
                                 //TestExecutionResult.Add(new SQLTestResults(testCase.ID, false, e.Message));
                                 Console.WriteLine("[ ERROR ] Exception caught. Test execution will continue.");
-                                Console.WriteLine("[ INFO  ] " + e.Message);
+                                Console.WriteLine("[ INFO  ] " + ex.Message);
+                                tceRecord.Comment = "Execution ended with exception: " + ex.Message;
                             }
                         }
-
+                        tseRecord.Comment = "Testcase execution completed successfully";
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Console.WriteLine("[ Error   ] {0}", ex.Message);
+                        tseRecord.Comment = "Testcase execution interrupted by exception: " + ex.Message;
                     }
-                } 
+                }
+                rseRecord.Comment = "Execution completed successfully";
+                RegressionSuiteExecutionRecords.Add(rseRecord);
+
             }
         }
     }
