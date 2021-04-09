@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
+using Rocket.RDVQA.Tools.Report;
 using Rocket.RDVQA.Utils;
 
 namespace Rocket.RDVQA.Tools.ODBC
@@ -129,6 +130,7 @@ namespace Rocket.RDVQA.Tools.ODBC
 
         public TestSuiteExecutionRecord(string suiteName)
         {
+            TestCaseExecutionRecords = new List<TestCaseExecutionRecord>();
             Name = suiteName;
         }
 
@@ -143,18 +145,32 @@ namespace Rocket.RDVQA.Tools.ODBC
         {
             TestCaseExecutionRecords.Add(tceRecord);
         }
+        public int PassTCCount()
+        {
+            int _ = 0;
+            foreach(TestCaseExecutionRecord tceRecord in TestCaseExecutionRecords)
+            {
+                _ += tceRecord.Pass ? 1 : 0;
+            }
+            return _;
+        }
+
+        internal void BuildReportTable()
+        {
+            throw new NotImplementedException();
+        }
     }
     internal class RegressionSuiteExecutionRecord
     {
-        private List<TestSuiteExecutionRecord> TestSuiteExecutionRecords;
         public RegressionSuiteExecutionRecord(string suiteName)
         {
+            TestSuiteExecutionRecords = new List<TestSuiteExecutionRecord>();
             Name = suiteName;
         }
 
         public string Name { get; private set; }
         public string Comment { get; set; }
-
+        public List<TestSuiteExecutionRecord> TestSuiteExecutionRecords { get; private set; }
         public void AddTestSuiteExecutionRecord(TestSuiteExecutionRecord tseRecord)
         {
             TestSuiteExecutionRecords.Add(tseRecord);
@@ -172,6 +188,14 @@ namespace Rocket.RDVQA.Tools.ODBC
                 _ += tseRecord.TestCaseCount();
             }
             return _;
+        }
+
+        public void BuildReportTables()
+        {
+            foreach(TestSuiteExecutionRecord tseRecord  in TestSuiteExecutionRecords)
+            {
+                tseRecord.BuildReportTable();
+            }
         }
     }
     internal class RegressionManager
@@ -198,11 +222,31 @@ namespace Rocket.RDVQA.Tools.ODBC
         private void BuildRegressionReport()
         {
             Console.WriteLine(new String('#', 80));
-            Console.WriteLine("#" + "Regression Report".PadLeft(30)+"#".PadLeft(30));
+            Console.WriteLine("#" + "Regression Report".PadLeft(45)+"#".PadLeft(30));
             Console.WriteLine(new String('#', 80));
-
+            Console.WriteLine("Regression Suite Execution Summary");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("Total Regression Suites          : " + RegressionSuites.Count);
+            Console.WriteLine("Total Executed Regression Suites : " + RegressionSuiteExecutionRecords.Count);
             foreach (RegressionSuiteExecutionRecord rseRecord in RegressionSuiteExecutionRecords)
             {
+                Console.WriteLine(new String('-', 80));
+                Console.WriteLine("Execution Summary for Regression Suite - " + rseRecord.Name);
+                Console.WriteLine(new String('-', 80));
+                Console.WriteLine("Number of Test Suites : " + rseRecord.TestSuiteCount());
+                var table = new ConsoleTable("Test Suite Name", "Total TCs", "Pass TCs", "Fail TCs");
+                Console.WriteLine(new String('-', 60));
+                foreach(TestSuiteExecutionRecord tseRecord in rseRecord.TestSuiteExecutionRecords)
+                {
+                    int tcCount = tseRecord.TestCaseCount();
+                    int passCount = tseRecord.PassTCCount();
+                    table.AddRow(tseRecord.Name, tcCount.ToString("D4"), passCount.ToString("D4"), (tcCount - passCount).ToString("D4"));
+                    Console.WriteLine();
+                }
+                table.Write();
+
+                Console.WriteLine(new String('-', 60));
+
 
             }
         }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "rdvqa-odbctools-regressionrunner": {
+      "commandName": "Project",
+      "commandLineArgs": "cfgxml=\"C:\\Users\\skrishna\\OneDrive - Rocket Software, Inc\\#01 Projects\\#012 DVM\\#10 Regression\\#01 Inputs\\testconfig_x64.xml\""
+    }
+  }
+}

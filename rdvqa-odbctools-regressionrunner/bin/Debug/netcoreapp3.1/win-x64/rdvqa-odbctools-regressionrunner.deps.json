@@ -10,7 +10,6 @@
       "rdvqa-odbctools-regressionrunner/1.0.0": {
         "dependencies": {
           "System.Data.Odbc": "5.0.0",
-          "rdvqa-odbctools-baselinebuilder": "1.0.0",
           "rdvqa-odbctools-hashgenerator": "1.0.0"
         },
         "runtime": {
@@ -27,15 +26,6 @@
             "assemblyVersion": "5.0.0.0",
             "fileVersion": "5.0.20.51904"
           }
-        }
-      },
-      "rdvqa-odbctools-baselinebuilder/1.0.0": {
-        "dependencies": {
-          "System.Data.Odbc": "5.0.0",
-          "rdvqa-odbctools-hashgenerator": "1.0.0"
-        },
-        "runtime": {
-          "rdvqa-odbctools-baselinebuilder.dll": {}
         }
       },
       "rdvqa-odbctools-hashgenerator/1.0.0": {
@@ -64,11 +54,6 @@
       "sha512": "sha512-j4WsYGmcD7m1D0Tc3N7HqWqcdUHNn9+kdXh9ODTWEsOGrAvALf+BgRStd7L0/O/zDS0R4Uu9vNM8UY6EnK+WYw==",
       "path": "system.data.odbc/5.0.0",
       "hashPath": "system.data.odbc.5.0.0.nupkg.sha512"
-    },
-    "rdvqa-odbctools-baselinebuilder/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "rdvqa-odbctools-hashgenerator/1.0.0": {
       "type": "project",
