@@ -103,7 +103,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                         Console.Error.WriteLine("Invalide testcase type identified for TC-ID:" + testcaseFields[0]);
                     }
                 }
-                TestSuites.Add(new TestSuite(Path.GetFileNameWithoutExtension(path), connectionString, sqlTestCases));
+                TestSuites.Add(new TestSuite(new DirectoryInfo(path).Parent.Name + "/"+Path.GetFileNameWithoutExtension(path), connectionString, sqlTestCases));
             }
         }
         public List<String> GetPassedTestCaseIDs()
@@ -222,7 +222,7 @@ namespace Rocket.RDVQA.Tools.ODBC
         private void BuildRegressionReport()
         {
             Console.WriteLine(new String('#', 80));
-            Console.WriteLine("#" + "Regression Report".PadLeft(45)+"#".PadLeft(30));
+            Console.WriteLine("#" + "Regression Report".PadLeft(45)+"#".PadLeft(33));
             Console.WriteLine(new String('#', 80));
             Console.WriteLine("Regression Suite Execution Summary");
             Console.WriteLine("----------------------------------");
@@ -234,14 +234,13 @@ namespace Rocket.RDVQA.Tools.ODBC
                 Console.WriteLine("Execution Summary for Regression Suite - " + rseRecord.Name);
                 Console.WriteLine(new String('-', 80));
                 Console.WriteLine("Number of Test Suites : " + rseRecord.TestSuiteCount());
-                var table = new ConsoleTable("Test Suite Name", "Total TCs", "Pass TCs", "Fail TCs");
                 Console.WriteLine(new String('-', 60));
+                var table = new ConsoleTable("Test Suite Name", "Total TCs", "Pass TCs", "Fail TCs");
                 foreach(TestSuiteExecutionRecord tseRecord in rseRecord.TestSuiteExecutionRecords)
                 {
                     int tcCount = tseRecord.TestCaseCount();
                     int passCount = tseRecord.PassTCCount();
                     table.AddRow(tseRecord.Name, tcCount.ToString("D4"), passCount.ToString("D4"), (tcCount - passCount).ToString("D4"));
-                    Console.WriteLine();
                 }
                 table.Write();
 
