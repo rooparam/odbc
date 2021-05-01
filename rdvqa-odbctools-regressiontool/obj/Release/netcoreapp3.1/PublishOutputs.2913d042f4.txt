@@ -1,0 +1,11 @@
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\testconfig.xsd
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\rdvqa-odbctools-regressiontool.exe
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\rdvqa-odbctools-regressiontool.dll
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\rdvqa-odbctools-regressiontool.deps.json
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\rdvqa-odbctools-regressiontool.runtimeconfig.json
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\rdvqa-odbctools-regressiontool.pdb
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\System.Data.Odbc.dll
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\runtimes\freebsd\lib\netcoreapp2.0\System.Data.Odbc.dll
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\runtimes\linux\lib\netcoreapp2.0\System.Data.Odbc.dll
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\runtimes\osx\lib\netcoreapp2.0\System.Data.Odbc.dll
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\bin\Release\netcoreapp3.1\publish\runtimes\win\lib\netcoreapp2.0\System.Data.Odbc.dll

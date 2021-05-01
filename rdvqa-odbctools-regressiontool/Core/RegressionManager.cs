@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
+using System.Threading;
 //using Rocket.RDVQA.Tools.Report;
 using Rocket.RDVQA.Tools.ODBC.Utils;
 
@@ -242,7 +243,9 @@ namespace Rocket.RDVQA.Tools.ODBC
             Console.SetOut(logWriter);
             RunRegression();
             BuildRegressionReport();
+
         }
+   
         private void BuildRegressionReport()
         {
             //ConsoleTableOptions consoleTableOptions = new ConsoleTableOptions();

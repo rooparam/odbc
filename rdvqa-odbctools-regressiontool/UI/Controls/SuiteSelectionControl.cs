@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
@@ -62,8 +63,15 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
         private void btnStartRegression_Click(object sender, EventArgs e)
         {
             pnlListControl.Enabled = false;
-            logWriter = new LogWriter(this.txtLog);
             btnViewLog.Enabled = true;
+
+            Thread trd = new Thread(new ThreadStart(this.ThreadTask));
+            trd.IsBackground = true;
+            trd.Start();
+        }
+        private void ThreadTask()
+        {
+            logWriter = new LogWriter(this.txtLog);
             regressionManager.StartRegression(logWriter);
         }
 
