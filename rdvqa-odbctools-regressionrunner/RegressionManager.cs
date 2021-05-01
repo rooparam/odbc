@@ -16,7 +16,9 @@ namespace Rocket.RDVQA.Tools.ODBC
     {
         SELECT,
         INSERT,
-        DELETE
+        DELETE,
+        UPDATE,
+        CONFIG
     }
     internal class SQLTestCase
     {
@@ -97,6 +99,14 @@ namespace Rocket.RDVQA.Tools.ODBC
                     else if (testcaseFields[1].ToLower().Equals("insert"))
                     {
                         sqlTestCases.Add(new SQLTestCase(testcaseFields[0], SQLTestCaseType.INSERT, testcaseFields[2], testcaseFields[3], testcaseFields[4]));
+                    }
+                    else if (testcaseFields[1].ToLower().Equals("update"))
+                    {
+                        sqlTestCases.Add(new SQLTestCase(testcaseFields[0], SQLTestCaseType.UPDATE, testcaseFields[2], testcaseFields[3], testcaseFields[4]));
+                    }
+                    else if (testcaseFields[1].ToLower().Equals("config"))
+                    {
+                        sqlTestCases.Add(new SQLTestCase(testcaseFields[0], SQLTestCaseType.CONFIG, testcaseFields[2], testcaseFields[3], testcaseFields[4]));
                     }
                     else
                     {
@@ -221,6 +231,11 @@ namespace Rocket.RDVQA.Tools.ODBC
 
         private void BuildRegressionReport()
         {
+            ConsoleTableOptions consoleTableOptions = new ConsoleTableOptions();
+            consoleTableOptions.Columns = new List<String>() { "Test Suite Name", "Total TCs", "Pass TCs", "Fail TCs"};
+            consoleTableOptions.EnableCount = false;
+            //consoleTableOptions.OutputTo=new TextWriter(new File)
+            consoleTableOptions.NumberAlignment = Alignment.Right;
             Console.WriteLine(new String('#', 80));
             Console.WriteLine("#" + "Regression Report".PadLeft(45)+"#".PadLeft(33));
             Console.WriteLine(new String('#', 80));
@@ -235,7 +250,8 @@ namespace Rocket.RDVQA.Tools.ODBC
                 Console.WriteLine(new String('-', 80));
                 Console.WriteLine("Number of Test Suites : " + rseRecord.TestSuiteCount());
                 Console.WriteLine(new String('-', 60));
-                var table = new ConsoleTable("Test Suite Name", "Total TCs", "Pass TCs", "Fail TCs");
+                //var table = new ConsoleTable("Test Suite Name", "Total TCs", "Pass TCs", "Fail TCs");
+                var table = new ConsoleTable(consoleTableOptions);
                 foreach(TestSuiteExecutionRecord tseRecord in rseRecord.TestSuiteExecutionRecords)
                 {
                     int tcCount = tseRecord.TestCaseCount();

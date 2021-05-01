@@ -16,6 +16,8 @@ namespace Rocket.RDVQA.Tools.ODBC
         SELECT,
         INSERT,
         DELETE,
+        UPDATE,
+        CONFIG,
         OTHER
     }
     struct TestEnvironment
@@ -77,7 +79,9 @@ namespace Rocket.RDVQA.Tools.ODBC
                     "select" => SQLTestCaseType.SELECT,
                     "insert" => SQLTestCaseType.INSERT,
                     "delete" => SQLTestCaseType.DELETE,
-                    _ => SQLTestCaseType.OTHER,
+                    "update" => SQLTestCaseType.UPDATE,
+                    "set" => SQLTestCaseType.CONFIG,
+                    _ => SQLTestCaseType.OTHER
                 };
             }
             // For each test environment
@@ -105,12 +109,12 @@ namespace Rocket.RDVQA.Tools.ODBC
                         string connectionString = GetConnectionString(env.Parms);
                         List<SQLTestCase> sqlTestcases = new List<SQLTestCase>();
                         Console.WriteLine("[ Info    ] Creating baseline for Test Suite " + tcIDPfx);
-
+                        // Create ODBC connection
+                        using OdbcConnection odbcConnection = new OdbcConnection(connectionString);
+                        odbcConnection.Open();
                         foreach (string testCase in File.ReadAllLines(testSuite))
                         {
-                            // Create ODBC connection
-                            using OdbcConnection odbcConnection = new OdbcConnection(connectionString);
-                            odbcConnection.Open();
+                            
                             MemoryStream tempDataStream = new MemoryStream();
                             StreamWriter fileWriter = new StreamWriter(tempDataStream);
                             if (testCase.Trim().StartsWith("--"))
@@ -124,6 +128,16 @@ namespace Rocket.RDVQA.Tools.ODBC
                             DataSet resultSet = new DataSet();                            
                             try
                             {
+                                if(SQLType(testCase.Split(" ")[0])==SQLTestCaseType.CONFIG)
+                                {
+                                    string parm = testCase.Split(" ")[1];
+                                    switch(parm.ToUpper())
+                                    {
+                                        case "AUTO-ON":
+                                            break;
+
+                                    }
+                                }
                                 Console.WriteLine("[ Info    ] Creating baseline for Test Case " + (tcIDPfx + tcCount.ToString("D4")));
                                 odbcCommand.ExecuteNonQuery();                               
                                 new OdbcDataAdapter(odbcCommand).Fill(resultSet);
@@ -146,10 +160,11 @@ namespace Rocket.RDVQA.Tools.ODBC
                             tempDataStream.Close();
                             sqlTestcases.Add(new SQLTestCase(tcIDPfx + tcCount.ToString("D4"), SQLType(testCase.Split(" ")[0]),hash,testCase,""));
                             odbcCommand.Dispose();
-                            odbcConnection.Close();
                         }
+                        odbcConnection.Close();
+
                         // build baseline file for testsuite
-                       
+
                         string outFile = baselineOutDirectory + "\\" + tcIDPfx + ".baseline";
                         //OdbcConnection x = new OdbcConnection(env.DSN);
 

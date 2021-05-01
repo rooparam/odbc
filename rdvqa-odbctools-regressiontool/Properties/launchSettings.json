@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Debug": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-regressiontool"
+    }
+  }
+}

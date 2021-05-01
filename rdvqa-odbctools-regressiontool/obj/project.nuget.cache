@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "eUWd3N2T3LY+Vs06OSWIpeEuzz4V78TaPaOzN+XHUqRTaHuFSx6bODWSyS2SLvioPHsQKB0yYWWIk5xs/nwlyQ==",
+  "dgSpecHash": "HpRq+fdRLQJ4ydeX28sHTnEGiUp1WwwuChmO4o2BvE288NiT/T2LZXEESExxczbrK3NHjABEgjygDZgJe8EKEQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-regressiontool\\rdvqa-odbctools-regressiontool.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\skrishna\\.nuget\\packages\\system.data.odbc\\5.0.0\\system.data.odbc.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

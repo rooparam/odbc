@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace rdvaqa_odbctools_base
+namespace rdvqa_odbctools_tests
 {
     class Program
     {

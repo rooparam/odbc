@@ -3,23 +3,24 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>rdvqa_odbctools_regressiontool</RootNamespace>
+    <RootNamespace>Rocket.RDVQA.Tools.ODBC</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <Compile Remove="UI\NewFolder\**" />
+    <EmbeddedResource Remove="UI\NewFolder\**" />
+    <None Remove="UI\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <PackageReference Include="System.Data.Odbc" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="testconfig.xsd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

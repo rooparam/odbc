@@ -6,22 +6,14 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvqa-odbctools-regressionrunner.runtimeconfig.json
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvqa-odbctools-regressionrunner.runtimeconfig.dev.json
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvqa-odbctools-regressionrunner.exe
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvaqa-odbctools-base.exe
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\baselineconfig.xml
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\baselineconfig.xsd
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\testconfig.xml
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\testconfig.xsd
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvaqa-odbctools-base.deps.json
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvaqa-odbctools-base.runtimeconfig.json
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvaqa-odbctools-base.runtimeconfig.dev.json
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvaqa-odbctools-base.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\ref\rdvaqa-odbctools-base.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvaqa-odbctools-base.pdb
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\System.Data.Odbc.dll
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\runtimes\freebsd\lib\netcoreapp2.0\System.Data.Odbc.dll
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\runtimes\linux\lib\netcoreapp2.0\System.Data.Odbc.dll
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\runtimes\osx\lib\netcoreapp2.0\System.Data.Odbc.dll
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.Data.Odbc.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvqa-odbctools-baselinebuilder.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvqa-odbctools-hashgenerator.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\bin\x86\Debug\net5.0\rdvqa-odbctools-regressionrunner.dll
@@ -37,4 +29,3 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\obj\
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\obj\x86\Debug\net5.0\rdvaqa-odbctools-base.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\obj\x86\Debug\net5.0\ref\rdvaqa-odbctools-base.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\obj\x86\Debug\net5.0\rdvaqa-odbctools-base.pdb
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvaqa-odbctools-base\obj\x86\Debug\net5.0\rdvaqa-odbctools-base.genruntimeconfig.cache

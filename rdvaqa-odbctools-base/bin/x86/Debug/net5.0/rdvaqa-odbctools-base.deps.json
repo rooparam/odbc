@@ -72,7 +72,6 @@
       "rdvqa-odbctools-regressionrunner/1.0.0": {
         "dependencies": {
           "System.Data.Odbc": "5.0.0",
-          "rdvqa-odbctools-baselinebuilder": "1.0.0",
           "rdvqa-odbctools-hashgenerator": "1.0.0"
         },
         "runtime": {

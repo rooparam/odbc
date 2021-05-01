@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rdvqa-odbctools-regressiontool", "rdvqa-odbctools-regressiontool.csproj", "{839503C8-F0F5-457E-A1C7-44C0F362050C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE404EE0-1C13-42AA-8CD7-C01F1CB8E6A6}
+	EndGlobalSection
+EndGlobal
