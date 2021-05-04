@@ -8,10 +8,19 @@
     ".NETCoreApp,Version=v3.1": {
       "rdvqa-odbctools-regressiontool/1.0.0": {
         "dependencies": {
+          "IBM.Data.DB2.Core": "3.1.0.400",
           "System.Data.Odbc": "5.0.0"
         },
         "runtime": {
           "rdvqa-odbctools-regressiontool.dll": {}
+        }
+      },
+      "IBM.Data.DB2.Core/3.1.0.400": {
+        "runtime": {
+          "lib/netstandard2.1/IBM.Data.DB2.Core.dll": {
+            "assemblyVersion": "3.1.0.400",
+            "fileVersion": "3.1.0.400"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/5.0.0": {},
@@ -59,6 +68,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "IBM.Data.DB2.Core/3.1.0.400": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kZV6xspzj1gndQHsTPstp3+IvQlxs9/rTvkaq8QK3FJgLHdwmtZ7b+kBeZ8w5xZKa9nwcEY/dBz7ZbbVcaNyiA==",
+      "path": "ibm.data.db2.core/3.1.0.400",
+      "hashPath": "ibm.data.db2.core.3.1.0.400.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/5.0.0": {
       "type": "package",

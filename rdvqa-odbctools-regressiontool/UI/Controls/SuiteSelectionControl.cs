@@ -39,12 +39,15 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
         private int rsIdx, tsIdx, tcIdx;
         RegressionManager regressionManager;
 
-
+        private Thread regressionThread;
 
         private LogWriter logWriter;
         public SuiteSelectionControl()
         {
+            regressionThread = new Thread(new ThreadStart(this.ThreadTask));
+
             InitializeComponent();
+
         }
 
         private void listTestSuites_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,9 +68,8 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             pnlListControl.Enabled = false;
             btnViewLog.Enabled = true;
 
-            Thread trd = new Thread(new ThreadStart(this.ThreadTask));
-            trd.IsBackground = true;
-            trd.Start();
+            regressionThread.IsBackground = true;
+            regressionThread.Start();
         }
         private void ThreadTask()
         {
@@ -87,6 +89,12 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             {
                 btnViewLog.Text = "Show Log";
             }
+        }
+
+        private void btnStopRegression_Click(object sender, EventArgs e)
+        {
+            regressionThread.Interrupt();
+            pnlListControl.Enabled = true;
         }
 
         private void btnLoadConfigFile_Click(object sender, EventArgs e)

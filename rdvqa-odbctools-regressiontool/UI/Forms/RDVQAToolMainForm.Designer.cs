@@ -37,11 +37,13 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Forms
             this.menuNewRegressionSuite = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTools = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRegressionRunner = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBaselineBuilderBatch = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.MainContainer = new System.Windows.Forms.TabControl();
+            this.menuTableViewer = new System.Windows.Forms.ToolStripMenuItem();
             this.mstrpMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +98,9 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Forms
             // menuTools
             // 
             this.menuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuRegressionRunner});
+            this.menuRegressionRunner,
+            this.menuBaselineBuilderBatch,
+            this.menuTableViewer});
             this.menuTools.Name = "menuTools";
             this.menuTools.Size = new System.Drawing.Size(47, 20);
             this.menuTools.Text = "Tools";
@@ -104,9 +108,16 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Forms
             // menuRegressionRunner
             // 
             this.menuRegressionRunner.Name = "menuRegressionRunner";
-            this.menuRegressionRunner.Size = new System.Drawing.Size(172, 22);
+            this.menuRegressionRunner.Size = new System.Drawing.Size(198, 22);
             this.menuRegressionRunner.Text = "Regression Runner";
             this.menuRegressionRunner.Click += new System.EventHandler(this.menuRegressionRunner_Click);
+            // 
+            // menuBaselineBuilderBatch
+            // 
+            this.menuBaselineBuilderBatch.Name = "menuBaselineBuilderBatch";
+            this.menuBaselineBuilderBatch.Size = new System.Drawing.Size(198, 22);
+            this.menuBaselineBuilderBatch.Text = "Baseline Builder (Batch)";
+            this.menuBaselineBuilderBatch.Click += new System.EventHandler(this.menuBaselineBuilderBatch_Click);
             // 
             // statusStrip1
             // 
@@ -158,6 +169,13 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Forms
             this.MainContainer.Size = new System.Drawing.Size(1237, 521);
             this.MainContainer.TabIndex = 3;
             // 
+            // menuTableViewer
+            // 
+            this.menuTableViewer.Name = "menuTableViewer";
+            this.menuTableViewer.Size = new System.Drawing.Size(198, 22);
+            this.menuTableViewer.Text = "Table Viewer";
+            this.menuTableViewer.Click += new System.EventHandler(this.menuTableViewer_Click);
+            // 
             // RDVQAToolMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -193,5 +211,7 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Forms
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.ToolStripMenuItem menuRegressionRunner;
         private System.Windows.Forms.TabControl MainContainer;
+        private System.Windows.Forms.ToolStripMenuItem menuBaselineBuilderBatch;
+        private System.Windows.Forms.ToolStripMenuItem menuTableViewer;
     }
 }

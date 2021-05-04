@@ -1,4 +1,4 @@
-﻿
+﻿+
 namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
 {
     partial class SuiteSelectionControl
@@ -41,7 +41,7 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             this.controlButtonSplitter = new System.Windows.Forms.Splitter();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnStartRegression = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnStopRegression = new System.Windows.Forms.Button();
             this.btnViewLog = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.btnLoadConfigFile = new System.Windows.Forms.Button();
@@ -168,7 +168,7 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.91315F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.54343F));
             this.tableLayoutPanel2.Controls.Add(this.btnStartRegression, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnStopRegression, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnViewLog, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 513);
@@ -190,15 +190,16 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             this.btnStartRegression.UseVisualStyleBackColor = true;
             this.btnStartRegression.Click += new System.EventHandler(this.btnStartRegression_Click);
             // 
-            // button2
+            // btnStopRegression
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(323, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(280, 39);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Stop";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnStopRegression.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStopRegression.Location = new System.Drawing.Point(323, 3);
+            this.btnStopRegression.Name = "btnStopRegression";
+            this.btnStopRegression.Size = new System.Drawing.Size(280, 39);
+            this.btnStopRegression.TabIndex = 1;
+            this.btnStopRegression.Text = "Stop";
+            this.btnStopRegression.UseVisualStyleBackColor = true;
+            this.btnStopRegression.Click += new System.EventHandler(this.btnStopRegression_Click);
             // 
             // btnViewLog
             // 
@@ -301,7 +302,7 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
         private System.Windows.Forms.Splitter controlButtonSplitter;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnStartRegression;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnStopRegression;
         private System.Windows.Forms.Button btnViewLog;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Button btnLoadConfigFile;
