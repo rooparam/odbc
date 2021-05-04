@@ -41,6 +41,7 @@
 
   <ItemGroup>
     <Folder Include="Core\DB\Tables\" />
+    <Folder Include="UI\Controls\Data\" />
   </ItemGroup>
 
 </Project>

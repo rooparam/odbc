@@ -1,5 +1,4 @@
-﻿+
-namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
+﻿namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
 {
     partial class SuiteSelectionControl
     {
