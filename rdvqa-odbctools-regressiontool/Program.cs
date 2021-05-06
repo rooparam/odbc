@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Rocket.RDVQA.Tools.ODBC.UI.Forms;
+using Rocket.RDVQA.Tools.UI.Forms;
+using Rocket.RDVQA.Tools.Core.Data;
 
 namespace Rocket.RDVQA.Tools.ODBC
 {
@@ -19,6 +20,7 @@ namespace Rocket.RDVQA.Tools.ODBC
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new RDVQAToolMainForm());
+            //_ = new ConnectionTester();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿
-namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
+namespace Rocket.RDVQA.Tools.UI.Controls
 {
     partial class BaselineBuilderControl
     {
@@ -43,7 +43,7 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             this.button3 = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbConnections = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -189,7 +189,7 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cmbConnections);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -204,13 +204,13 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             this.panel1.Size = new System.Drawing.Size(1018, 137);
             this.panel1.TabIndex = 0;
             // 
-            // comboBox1
+            // cmbConnections
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(128, 92);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(550, 23);
-            this.comboBox1.TabIndex = 11;
+            this.cmbConnections.FormattingEnabled = true;
+            this.cmbConnections.Location = new System.Drawing.Point(128, 92);
+            this.cmbConnections.Name = "cmbConnections";
+            this.cmbConnections.Size = new System.Drawing.Size(550, 23);
+            this.cmbConnections.TabIndex = 11;
             // 
             // label3
             // 
@@ -224,16 +224,16 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 54);
+            this.label2.Location = new System.Drawing.Point(26, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 15);
+            this.label2.Size = new System.Drawing.Size(96, 15);
             this.label2.TabIndex = 8;
-            this.label2.Text = "ODBC Connection ";
+            this.label2.Text = "Output Directory";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 95);
+            this.label1.Location = new System.Drawing.Point(26, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 15);
             this.label1.TabIndex = 8;
@@ -310,7 +310,7 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
         private System.Windows.Forms.Button btnBrowseSource;
         private System.Windows.Forms.TextBox txtBaselineDest;
         private System.Windows.Forms.TextBox txtSQLSource;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbConnections;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;

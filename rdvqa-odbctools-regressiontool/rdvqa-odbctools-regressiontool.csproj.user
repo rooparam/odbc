@@ -7,6 +7,9 @@
     <Compile Update="UI\Controls\BaselineBuilderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UI\Controls\NewSQLSelectTestCase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UI\Controls\SuiteSelectionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

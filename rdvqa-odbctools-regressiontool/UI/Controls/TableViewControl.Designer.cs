@@ -1,5 +1,5 @@
 ﻿
-namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
+namespace Rocket.RDVQA.Tools.UI.Controls
 {
     partial class TableViewControl
     {

@@ -7,7 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
+
+using Rocket.RDVQA.Tools.Core.Data;
+
+namespace Rocket.RDVQA.Tools.UI.Controls
 {
     public partial class BaselineBuilderControl : UserControl
     {
@@ -16,10 +19,12 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
         {
             baselineInputCollectionThread = null;
             InitializeComponent();
-        }
-
-        private void RDVQADBConnection_InfoMessage(object sender, IBM.Data.DB2.Core.DB2InfoMessageEventArgs e)
-        {
+            ///
+            /// Initialize datasource for cmbConnections
+            /// 
+            cmbConnections.DataSource = DBManager.DataTables.DTConnections;
+            cmbConnections.DisplayMember = "Name";
+            cmbConnections.ValueMember = "Connection_String";
         }
 
         private void btnBrowseSource_Click(object sender, EventArgs e)

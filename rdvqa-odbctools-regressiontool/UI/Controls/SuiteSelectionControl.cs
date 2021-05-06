@@ -5,36 +5,18 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
+using Rocket.RDVQA.Tools.ODBC;
+using Rocket.RDVQA.Tools.Core;
+
+namespace Rocket.RDVQA.Tools.UI.Controls
 {
     
     public partial class SuiteSelectionControl : UserControl
     {
-        private class LogWriter : System.IO.TextWriter
-        {
-            public override Encoding Encoding
-            {
-                get { return Encoding.Unicode; }
-            }
-            private Control MyControl;
-            public LogWriter(Control control)
-            {
-                MyControl = control;
-            }
-
-            public override void Write(char value)
-            {
-                MyControl.Text += value;
-            }
-
-            public override void Write(string value)
-            {
-                MyControl.Text += value;
-            }
-
-        }
+       
 
         private int rsIdx, tsIdx, tcIdx;
         RegressionManager regressionManager;
@@ -47,6 +29,8 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
             regressionThread = new Thread(new ThreadStart(this.ThreadTask));
 
             InitializeComponent();
+            logWriter = new LogWriter(this.txtLog);
+
 
         }
 
@@ -70,10 +54,10 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
 
             regressionThread.IsBackground = true;
             regressionThread.Start();
+           
         }
         private void ThreadTask()
         {
-            logWriter = new LogWriter(this.txtLog);
             regressionManager.StartRegression(logWriter);
         }
 

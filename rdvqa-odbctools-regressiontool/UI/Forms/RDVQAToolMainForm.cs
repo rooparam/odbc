@@ -5,15 +5,16 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Rocket.RDVQA.Tools.ODBC.UI.Controls;
+using Rocket.RDVQA.Tools.UI.Controls;
 
 
-namespace Rocket.RDVQA.Tools.ODBC.UI.Forms
+namespace Rocket.RDVQA.Tools.UI.Forms
 {
     public partial class RDVQAToolMainForm : Form
     {
         private SuiteSelectionControl suiteSelectionControl;
         private BaselineBuilderControl baselineBuilderControl;
+        private NewSQLSelectTestCase newSQLSelectTestCase;
 
         private int regressionFormCounter = 0;
 
@@ -60,6 +61,15 @@ namespace Rocket.RDVQA.Tools.ODBC.UI.Forms
             this.MainContainer.TabPages.Add("Table Viewer");
             this.MainContainer.TabPages[pageCount].Controls.Add(t);
 
+        }
+
+        private void menuAddTCSQLDESelect_Click(object sender, EventArgs e)
+        {
+            newSQLSelectTestCase = new NewSQLSelectTestCase();
+            newSQLSelectTestCase.Dock = DockStyle.Left;
+            int pageCount = this.MainContainer.TabPages.Count;
+            this.MainContainer.TabPages.Add("New SQL Select TC (DirectExec) - ");
+            this.MainContainer.TabPages[pageCount].Controls.Add(newSQLSelectTestCase);
         }
     }
 }

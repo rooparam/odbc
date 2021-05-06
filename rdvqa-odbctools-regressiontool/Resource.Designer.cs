@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Rocket.RDVQA.Tools.ODBC {
+namespace Rocket.RDVQA.Tools {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Rocket.RDVQA.Tools.ODBC {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rocket.RDVQA.Tools.ODBC.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rocket.RDVQA.Tools.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,60 @@ namespace Rocket.RDVQA.Tools.ODBC {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RS28DDS9.
+        /// </summary>
+        internal static string RDVQADB_DB2_Database {
+            get {
+                return ResourceManager.GetString("RDVQADB.DB2.Database", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3725.
+        /// </summary>
+        internal static string RDVQADB_DB2_port {
+            get {
+                return ResourceManager.GetString("RDVQADB.DB2.port", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to J0hnwick.
+        /// </summary>
+        internal static string RDVQADB_DB2_Pwd {
+            get {
+                return ResourceManager.GetString("RDVQADB.DB2.Pwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RDVQADB.
+        /// </summary>
+        internal static string RDVQADB_DB2_Schema {
+            get {
+                return ResourceManager.GetString("RDVQADB.DB2.Schema", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rs28.rocketsoftware.com.
+        /// </summary>
+        internal static string RDVQADB_DB2_Server {
+            get {
+                return ResourceManager.GetString("RDVQADB.DB2.Server", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TS8832.
+        /// </summary>
+        internal static string RDVQADB_DB2_User {
+            get {
+                return ResourceManager.GetString("RDVQADB.DB2.User", resourceCulture);
             }
         }
         
@@ -133,11 +187,38 @@ namespace Rocket.RDVQA.Tools.ODBC {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CONNECTIONS.
+        /// </summary>
+        internal static string RDVQADB_Tables_Connections {
+            get {
+                return ResourceManager.GetString("RDVQADB.Tables.Connections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TS8832.
         /// </summary>
         internal static string RDVQADB_User {
             get {
                 return ResourceManager.GetString("RDVQADB.User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to true.
+        /// </summary>
+        internal static string Settings_Connection_DB2 {
+            get {
+                return ResourceManager.GetString("Settings.Connection.DB2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string User_DB_ConnectionString {
+            get {
+                return ResourceManager.GetString("User.DB.ConnectionString", resourceCulture);
             }
         }
     }

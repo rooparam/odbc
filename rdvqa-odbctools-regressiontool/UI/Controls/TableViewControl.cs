@@ -6,16 +6,15 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using Rocket.RDVQA.Tools.ODBC.Core.DB;
+using Rocket.RDVQA.Tools.Core.Data;
 
-namespace Rocket.RDVQA.Tools.ODBC.UI.Controls
+namespace Rocket.RDVQA.Tools.UI.Controls
 {
     public partial class TableViewControl : UserControl
     {
         public TableViewControl()
         {
             InitializeComponent();
-            this.dataGridView.DataSource = new DBManager().ReadTableConnections();
 
         }
 
