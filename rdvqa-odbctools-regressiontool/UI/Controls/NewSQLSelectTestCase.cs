@@ -12,22 +12,30 @@ using Rocket.RDVQA.Tools.Core;
 using Rocket.RDVQA.Tools.Core.Data;
 using Rocket.RDVQA.Tools.Core.Data.Extensions;
 using Rocket.RDVQA.Tools.ODBC;
+using Rocket.RDVQA.Tools.UI.Forms;
 
 namespace Rocket.RDVQA.Tools.UI.Controls
 {
     public partial class NewSQLSelectTestCase : UserControl
     {
-        LogWriter logWriter;
+        private RDVQAQueryManager queryManager;
+        private delegate void SafeCallDelegate(string text);
+        private List<SQLDeSelectTestCase> candTestCases = null;
+        private LogWriter executionLog;
+        private LogWriter executionResult;
         public NewSQLSelectTestCase()
         {
             InitializeComponent();
-            logWriter = new LogWriter(txtLog);
+            executionLog = new LogWriter(this.txtLog);
+            executionResult = new LogWriter(this.txtResults);
+            queryManager = new RDVQAQueryManager(executionLog,executionResult);
+
             //
             // initialize cmbConnections
             //
             cmbConnections.DataSource = DBManager.DataTables.DTConnections;
             cmbConnections.DisplayMember = "name";
-            cmbConnections.ValueMember = "connection_string";
+            cmbConnections.ValueMember = "ID";
             //
             // initalize cmbDatasources
             //
@@ -36,28 +44,85 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             cmbDatasources.ValueMember = "ID";
         }
 
-        private void pnlInputFieldsContainer_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
 
         private void btnTestQueries_Click(object sender, EventArgs e)
         {
-            
-            RDVQAQueryManager queryManager = new RDVQAQueryManager();
-            DataSet ds = RDVQAQueryManager.ExecuteBatchSelect(txtQueries.Lines, cmbConnections.SelectedValue.ToString());
-            Console.SetOut(logWriter);
-            foreach(DataTable dt in ds.Tables)
+            btnTestQueries.Enabled = false;
+            btnTestQueries.Text = "Execution in Progress";
+            int connId = Convert.ToInt32(cmbConnections.SelectedValue.ToString());
+            string connectionString = DBManager.DataTables.DTConnections.Select("ID="+ connId)[0][2].ToString();
+            string[] queries = txtQueries.Lines;
+            candTestCases = new List<SQLDeSelectTestCase>();
+            foreach(string query in txtQueries.Lines)
             {
-                
+                if (!string.IsNullOrWhiteSpace(query))
+                {
+                    SQLDeSelectTestCase tc = new SQLDeSelectTestCase(query, Convert.ToInt32(cmbDatasources.SelectedValue.ToString()), txtTags.Text, connId, connectionString);
+                    candTestCases.Add(tc);
+                }
             }
-            PrintDataExtensions.Print(ds);
+            DataSet ds = new DataSet();
+            txtLog.Clear();
+            txtResults.Clear();
+            Task task = Task.Factory.StartNew(() => {
+                ds = queryManager.ExecuteBatchSelect(candTestCases);
+                ToggleExecutionStatus("Test Queries");
+            });         
         }
-
+        private void ToggleExecutionStatus(String text)
+        {
+            if (btnTestQueries.InvokeRequired)
+            {
+                var d = new SafeCallDelegate(ToggleExecutionStatus);
+                btnTestQueries.Invoke(d, new object[] {text });
+            }
+            else
+            {
+                btnTestQueries.Enabled = true;
+                btnTestQueries.Text = text;
+            }
+        }
         private void btnAddTCs_Click(object sender, EventArgs e)
         {
-            //Task insertTask = new Task(Db2D)
+            int dstypeId = Convert.ToInt32(cmbDatasources.SelectedValue);
+            string tags = txtTags.Text;
+            string[] queries = txtQueries.Lines;
+            txtLog.Clear();
+            if (candTestCases is null)
+            {
+                MessageBox.Show("Please Test Queries before adding.");
+            }
+            else
+            {
+                Task task = Task.Factory.StartNew(() => {
+                    new DBOperationsManager(executionLog).AddTestCasesDeSelect(candTestCases); 
+                    candTestCases.Clear();
+                });
+            }
+
+        }
+
+        private void txtLog_SelectionChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(txtLog.SelectionStart.ToString());
+        }
+
+        private void btnNewDataSource_Click(object sender, EventArgs e)
+        {
+            NewDataSourcecs newDsForm = new NewDataSourcecs();
+            newDsForm.ShowDialog();
+        }
+
+        private void btnNewConnection_Click(object sender, EventArgs e)
+        {
+            NewConnection newConnection = new NewConnection();
+            newConnection.ShowDialog();
+        }
+
+        private void btnAddTestSuites_Click(object sender, EventArgs e)
+        {
+            NewTestSuite newTestSuite = new NewTestSuite();
+            newTestSuite.ShowDialog();
         }
     }
 }

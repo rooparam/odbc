@@ -137,7 +137,7 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 739);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 839);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 11, 0);
             this.statusStrip1.Size = new System.Drawing.Size(1237, 22);
@@ -182,7 +182,7 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.MainContainer.Location = new System.Drawing.Point(0, 24);
             this.MainContainer.Name = "MainContainer";
             this.MainContainer.SelectedIndex = 0;
-            this.MainContainer.Size = new System.Drawing.Size(1237, 715);
+            this.MainContainer.Size = new System.Drawing.Size(1237, 815);
             this.MainContainer.TabIndex = 3;
             // 
             // RDVQAToolMainForm
@@ -190,7 +190,7 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1237, 761);
+            this.ClientSize = new System.Drawing.Size(1237, 861);
             this.Controls.Add(this.MainContainer);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.mstrpMain);

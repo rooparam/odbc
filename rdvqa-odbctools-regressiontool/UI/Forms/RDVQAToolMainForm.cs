@@ -66,7 +66,7 @@ namespace Rocket.RDVQA.Tools.UI.Forms
         private void menuAddTCSQLDESelect_Click(object sender, EventArgs e)
         {
             newSQLSelectTestCase = new NewSQLSelectTestCase();
-            newSQLSelectTestCase.Dock = DockStyle.Left;
+            newSQLSelectTestCase.Dock = DockStyle.Fill;
             int pageCount = this.MainContainer.TabPages.Count;
             this.MainContainer.TabPages.Add("New SQL Select TC (DirectExec) - ");
             this.MainContainer.TabPages[pageCount].Controls.Add(newSQLSelectTestCase);

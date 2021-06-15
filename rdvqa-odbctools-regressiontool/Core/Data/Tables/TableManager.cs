@@ -7,29 +7,24 @@ namespace Rocket.RDVQA.Tools.Core.DB
 {
     class TableManager
     {
-        private DataSet dsRDVQADB;
-        public DataTable DTDeSelect { get; private set; }
-        public DataTable DTConnections { get; private set; }
-        public DataTable DTDeSelectHash { get; private set; }
-        public DataTable DTDsTypes { get; private set; }
 
         public static TableManager RDVQADBTables = new TableManager();
 
         private TableManager()
         {
-            dsRDVQADB = new DataSet();
-            DefineConnectionsTable();
-            DefineDESelectHashTable();
-            DefineDESelectTable();
-            DefineDSTypesTable();
+            //dsRDVQADB = new DataSet();
+            //DefineConnectionsTable();
+            //DefineDESelectHashTable();
+            //DefineDESelectTable();
+            //DefineDSTypesTable();
         }
         /// <summary>
         /// Define Datatable for RDVQADB.CONNECTIONS
         /// 
         /// </summary>
-        private void DefineConnectionsTable()
+        public DataTable DTConnections()
         {
-            DTConnections = new DataTable("ConnectionStrings");
+            DataTable dt = new DataTable("RDVQADB.CONNECTIONS");
             DataColumn column;
             DataRow row;
 
@@ -39,10 +34,10 @@ namespace Rocket.RDVQA.Tools.Core.DB
                 DataType = System.Type.GetType("System.Int32"),
                 ColumnName = "ID",
                 AutoIncrement = false,
-                ReadOnly = true,
+                ReadOnly = false,
                 Unique = true
             };
-            DTConnections.Columns.Add(column);
+            dt.Columns.Add(column);
 
             // Create data column : Name
             column = new DataColumn()
@@ -54,45 +49,66 @@ namespace Rocket.RDVQA.Tools.Core.DB
                 Caption = "Connection DSN",
                 Unique = true
             };
-            DTConnections.Columns.Add(column);
+            dt.Columns.Add(column);
 
             // Create data column : Connection_String
             column = new DataColumn()
             {
-                DataType = System.Type.GetType("System.String "),
+                DataType = System.Type.GetType("System.String"),
                 ColumnName = "Connection_String",
                 Caption = "Connection String",
                 AutoIncrement = false,
                 ReadOnly = false,
                 Unique = false
             };
-            DTConnections.Columns.Add(column);
+            dt.Columns.Add(column);
 
-            // Creat data column  : Description
-            column = new DataColumn()
+            // Create data column : SSL
+            column = new DataColumn
             {
-                DataType = System.Type.GetType("System.String"),
-                ColumnName = "DESC",
-                Caption = "Description",
+                DataType = System.Type.GetType("System.Int16"),
+                ColumnName = "SSL",
                 AutoIncrement = false,
                 ReadOnly = false,
                 Unique = false
             };
-            DTConnections.Columns.Add(column);
-            DataColumn[] _ = new DataColumn[1];
-            _[0] = DTConnections.Columns["ID"];
-            DTConnections.PrimaryKey = _;
+            dt.Columns.Add(column);
 
-            // add table to dataset
-            dsRDVQADB.Tables.Add(DTConnections);
+            // Create data column : TSID
+            column = new DataColumn
+            {
+                DataType = System.Type.GetType("System.Int32"),
+                ColumnName = "TSID",
+                AutoIncrement = false,
+                ReadOnly = false,
+                Unique = false
+            };
+            dt.Columns.Add(column);
+
+            // Create data column : KSID
+            column = new DataColumn
+            {
+                DataType = System.Type.GetType("System.Int32"),
+                ColumnName = "KSID",
+                AutoIncrement = false,
+                ReadOnly = false,
+                Unique = false
+            };
+            dt.Columns.Add(column);
+
+            DataColumn[] _ = new DataColumn[1];
+            _[0] = dt.Columns["ID"];
+            dt.PrimaryKey = _;
+
+            return dt;
         }
         
         /// <summary>
         /// 
         /// </summary>
-        private void DefineDESelectTable()
+        public DataTable DTDeSelect()
         {
-            DTConnections = new DataTable("DE_Select"); 
+            DataTable dt = new DataTable("RDVQADB.DE_Select"); 
 
 
             DataColumn column;
@@ -103,34 +119,34 @@ namespace Rocket.RDVQA.Tools.Core.DB
                 DataType = System.Type.GetType("System.Int32"),
                 ColumnName = "ID",
                 AutoIncrement = false,
-                ReadOnly = true,
+                ReadOnly = false,
                 Unique = true
             };
-            DTConnections.Columns.Add(column);
+            dt.Columns.Add(column);
 
             // Create data column : Name
             column = new DataColumn()
             {
-                DataType = System.Type.GetType("System.String"),
+                DataType = System.Type.GetType("System.Int32"),
                 ColumnName = "DSTYPE_ID",
-                Caption = "Datasource Type",
+                Caption = "Datasource Type ID",
                 AutoIncrement = false,
                 ReadOnly = false,
-                Unique = true
+                Unique = false
             };
-            DTConnections.Columns.Add(column);
+            dt.Columns.Add(column);
 
             // Create data column : Connection_String
             column = new DataColumn()
             {
-                DataType = System.Type.GetType("System.String "),
+                DataType = System.Type.GetType("System.String"),
                 ColumnName = "QUERY",
                 Caption = "Sql Select Query",
                 AutoIncrement = false,
                 ReadOnly = false,
                 Unique = false
             };
-            DTConnections.Columns.Add(column);
+            dt.Columns.Add(column);
 
             // Creat data column  : Description
             column = new DataColumn()
@@ -142,21 +158,20 @@ namespace Rocket.RDVQA.Tools.Core.DB
                 ReadOnly = false,
                 Unique = false
             };
-            DTConnections.Columns.Add(column);
+            dt.Columns.Add(column);
             DataColumn[] _ = new DataColumn[1];
-            _[0] = DTConnections.Columns["ID"];
-            DTConnections.PrimaryKey = _;
-
-            // add table to dataset
-            dsRDVQADB.Tables.Add(DTConnections);
+            _[0] = dt.Columns["ID"];
+            dt.PrimaryKey = _;
+            
+            return dt;
         } 
         
         /// <summary>
         /// 
         /// </summary>
-        private void DefineDESelectHashTable()
+        public DataTable DTDeSelectHash()
         {
-            DTDeSelectHash = new DataTable("DESelect_Hash"); 
+            DataTable dt = new DataTable("RDVQADB.DESELECT_HASH"); 
 
 
             DataColumn column;
@@ -167,10 +182,10 @@ namespace Rocket.RDVQA.Tools.Core.DB
                 DataType = System.Type.GetType("System.Int32"),
                 ColumnName = "ID",
                 AutoIncrement = false,
-                ReadOnly = true,
+                ReadOnly = false,
                 Unique = true
             };
-            DTDeSelectHash.Columns.Add(column);
+            dt.Columns.Add(column);
 
             // Create data column : Name
             column = new DataColumn()
@@ -180,21 +195,21 @@ namespace Rocket.RDVQA.Tools.Core.DB
                 Caption = "Connection ID",
                 AutoIncrement = false,
                 ReadOnly = false,
-                Unique = true
+                Unique = false
             };
-            DTDeSelectHash.Columns.Add(column);
+            dt.Columns.Add(column);
 
             // Create data column : Connection_String
             column = new DataColumn()
             {
-                DataType = System.Type.GetType("System.Int32 "),
+                DataType = System.Type.GetType("System.Int32"),
                 ColumnName = "QUERY_ID",
                 Caption = "Sql Select Query",
                 AutoIncrement = false,
                 ReadOnly = false,
                 Unique = false
             };
-            DTDeSelectHash.Columns.Add(column);
+            dt.Columns.Add(column);
 
             // Creat data column  : Description
             column = new DataColumn()
@@ -206,19 +221,19 @@ namespace Rocket.RDVQA.Tools.Core.DB
                 ReadOnly = false,
                 Unique = false
             };
-            DTDeSelectHash.Columns.Add(column);
+            dt.Columns.Add(column);
             DataColumn[] _ = new DataColumn[1];
-            _[0] = DTDeSelectHash.Columns["ID"];
-            DTDeSelectHash.PrimaryKey = _;
+            _[0] = dt.Columns["ID"];
+            dt.PrimaryKey = _;
 
             // add table to dataset
-            dsRDVQADB.Tables.Add(DTDeSelectHash);
+            return dt;
         } /// <summary>
         /// 
         /// </summary>
-        private void DefineDSTypesTable()
+        private DataTable DTDSTypes()
         {
-            DTDsTypes = new DataTable("DSTYPES"); 
+            DataTable dt = new DataTable("RDVQADB.DSTYPES"); 
 
 
             DataColumn column;
@@ -232,7 +247,7 @@ namespace Rocket.RDVQA.Tools.Core.DB
                 ReadOnly = true,
                 Unique = true
             };
-            DTDsTypes.Columns.Add(column);
+            dt.Columns.Add(column);
 
             // Create data column : Name
             column = new DataColumn()
@@ -244,15 +259,14 @@ namespace Rocket.RDVQA.Tools.Core.DB
                 ReadOnly = false,
                 Unique = true
             };
-            DTDsTypes.Columns.Add(column);
+            dt.Columns.Add(column);
 
             
             DataColumn[] _ = new DataColumn[1];
-            _[0] = DTDsTypes.Columns["ID"];
-            DTDsTypes.PrimaryKey = _;
+            _[0] = dt.Columns["ID"];
+            dt.PrimaryKey = _;
 
-            // add table to dataset
-            dsRDVQADB.Tables.Add(DTDsTypes);
+            return dt;
         }
     }
 }

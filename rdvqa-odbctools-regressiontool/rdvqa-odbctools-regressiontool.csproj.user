@@ -16,6 +16,15 @@
     <Compile Update="UI\Controls\TableViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UI\Forms\NewConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Forms\NewDataSourcecs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Forms\NewTestSuite.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UI\Forms\RDVQAToolMainForm.cs">
       <SubType>Form</SubType>
     </Compile>

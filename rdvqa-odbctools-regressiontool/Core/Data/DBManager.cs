@@ -32,7 +32,7 @@ namespace Rocket.RDVQA.Tools.Core.Data
             }
             else
             {
-                dbOperationsManager = new DBOperationsManager();
+                dbOperationsManager = new DBOperationsManager(new LogWriter(null));
                 DTConnections = dbOperationsManager.GetDataConnections();
                 DTDsTypes = dbOperationsManager.GetDataDsTypes();
             }
@@ -81,8 +81,10 @@ namespace Rocket.RDVQA.Tools.Core.Data
             }
             return dt;
         }
-        public void InsertRecordsToDeSelect()
-        { }
+        public void InsertRecordsToDeSelect(string[] queries, string tags, int dstypeId )
+        {
+              
+        }
 
     }
 }

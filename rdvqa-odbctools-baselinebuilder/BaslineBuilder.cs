@@ -60,11 +60,13 @@ namespace Rocket.RDVQA.Tools.ODBC
         private static readonly string[] Parms = { "cfgxml", "genout"};
         private static string configXML;
         private static List<TestEnvironment> environments;
+        private static int exitCode = 0;
         static void Main(string[] args)
         {
             ValidateArguments(args);
             ParseConfigXML();
             BuildBaseline();
+            System.Environment.Exit(exitCode);
         }
 
         /// <summary>
@@ -176,6 +178,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                 else
                 {
                     Console.WriteLine("[ Error   ] Input directory {0} doesn't exist.",env.InputPath);
+                    exitCode = 99;
                 }
             }
         }

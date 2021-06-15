@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
+using System.Drawing;
 using System.Threading;
 //using Rocket.RDVQA.Tools.Report;
 using Rocket.RDVQA.Tools.ODBC.Utils;
@@ -255,20 +256,20 @@ namespace Rocket.RDVQA.Tools.ODBC
             //loggerTableOptions.EnableCount = false;
             //loggerTableOptions.OutputTo=new TextWriter(new File)
             //loggerTableOptions.NumberAlignment = Alignment.Right;
-            logger.WriteLine(new String('#', 80));
-            logger.WriteLine("#" + "Regression Report".PadLeft(45) + "#".PadLeft(33));
-            logger.WriteLine(new String('#', 80));
-            logger.WriteLine("Regression Suite Execution Summary");
-            logger.WriteLine("----------------------------------");
-            logger.WriteLine("Total Regression Suites          : " + RegressionSuites.Count);
-            logger.WriteLine("Total Executed Regression Suites : " + RegressionSuiteExecutionRecords.Count);
+            logger.WriteInfo(new String('#', 80));
+            logger.WriteInfo("#" + "Regression Report".PadLeft(45) + "#".PadLeft(33));
+            logger.WriteInfo(new String('#', 80));
+            logger.WriteInfo("Regression Suite Execution Summary");
+            logger.WriteInfo("----------------------------------");
+            logger.WriteInfo("Total Regression Suites          : " + RegressionSuites.Count);
+            logger.WriteInfo("Total Executed Regression Suites : " + RegressionSuiteExecutionRecords.Count);
             foreach (RegressionSuiteExecutionRecord rseRecord in RegressionSuiteExecutionRecords)
             {
-                logger.WriteLine(new String('-', 80));
-                logger.WriteLine("Execution Summary for Regression Suite - " + rseRecord.Name);
-                logger.WriteLine(new String('-', 80));
-                logger.WriteLine("Number of Test Suites : " + rseRecord.TestSuiteCount());
-                logger.WriteLine(new String('-', 60));
+                logger.WriteInfo(new String('-', 80));
+                logger.WriteInfo("Execution Summary for Regression Suite - " + rseRecord.Name);
+                logger.WriteInfo(new String('-', 80));
+                logger.WriteInfo("Number of Test Suites : " + rseRecord.TestSuiteCount());
+                logger.WriteInfo(new String('-', 60));
                 //var table = new loggerTable("Test Suite Name", "Total TCs", "Pass TCs", "Fail TCs");
                 //var table = new loggerTable(loggerTableOptions);
                 foreach (TestSuiteExecutionRecord tseRecord in rseRecord.TestSuiteExecutionRecords)
@@ -279,7 +280,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                 }
                 //table.Write();
 
-                logger.WriteLine(new String('-', 60));
+                logger.WriteInfo(new String('-', 60));
 
 
             }
@@ -318,8 +319,8 @@ namespace Rocket.RDVQA.Tools.ODBC
                         {
                             if (input is null || output is null)
                             {
-                                logger.WriteLine("[ Error ] Atleast one subnode of <environment> is empty.");
-                                logger.WriteLine("[ Info  ] None of the <environment> subnodes are nullable. ");
+                                logger.WriteInfo("[ Error ] Atleast one subnode of <environment> is empty.");
+                                logger.WriteInfo("[ Info  ] None of the <environment> subnodes are nullable. ");
                                 return;
                             }
                             else
@@ -368,8 +369,8 @@ namespace Rocket.RDVQA.Tools.ODBC
             {
                 if (type == XmlSeverityType.Error)
                 {
-                    logger.WriteLine("[ Error ] Invalid XML format.");
-                    logger.WriteLine("[ Info  ] " + e.Message);
+                    logger.WriteInfo("[ Error ] Invalid XML format.");
+                    logger.WriteInfo("[ Info  ] " + e.Message);
                     Environment.Exit(5);
                 }
             }
@@ -448,7 +449,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                                             if (testCase.Hash.Equals(hash))
                                             {
                                                 //TestExecutionResult.Add(new SQLTestResults(testCase.ID, true, ExecutionMessage));
-                                                logger.WriteLine(testCase.ID + " PASS");
+                                                logger.WriteInfo("[ INFO  ]"+testCase.ID + " PASS",Color.Green);
                                                 tceRecord.Pass = true;
                                                 tceRecord.Comment = "Execution Successful";
                                                 //CountPass++;
@@ -468,8 +469,8 @@ namespace Rocket.RDVQA.Tools.ODBC
                                         catch (Exception ex)
                                         {
                                             //TestExecutionResult.Add(new SQLTestResults(testCase.ID, false, e.Message));
-                                            logger.WriteLine("[ ERROR ] Exception caught. Test execution will continue.");
-                                            logger.WriteLine("[ INFO  ] " + ex.Message);
+                                            logger.WriteError("[ ERROR ] Exception caught. Test execution will continue.");
+                                            logger.WriteInfo("[ INFO  ] " + ex.Message,Color.Orange);
                                             tceRecord.Comment = "Execution ended with exception: " + ex.Message;
                                         }
 
@@ -483,13 +484,13 @@ namespace Rocket.RDVQA.Tools.ODBC
                             }
                             catch (Exception ex)
                             {
-                                logger.WriteLine("[ Error   ] {0}", ex.Message);
+                                logger.WriteError("[ Error   ] "+ ex.Message);
                                 tseRecord.Comment = "Test Suite execution interrupted by exception: " + ex.Message;
                             }
                         }
                         else
                         {
-                            logger.WriteLine("[ Info    ] Skip requested for Test Suite: {0}.", testSuite.Name);
+                            logger.WriteInfo("[ Info    ] Skip requested for Test Suite: "+ testSuite.Name,Color.PaleTurquoise);
                             tseRecord.Comment = "Test Suite Skipped By User";
                         }
                     }

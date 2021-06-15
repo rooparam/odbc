@@ -207,7 +207,7 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             // cmbConnections
             // 
             this.cmbConnections.FormattingEnabled = true;
-            this.cmbConnections.Location = new System.Drawing.Point(128, 92);
+            this.cmbConnections.Location = new System.Drawing.Point(175, 87);
             this.cmbConnections.Name = "cmbConnections";
             this.cmbConnections.Size = new System.Drawing.Size(550, 23);
             this.cmbConnections.TabIndex = 11;
@@ -215,25 +215,25 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 16);
+            this.label3.Location = new System.Drawing.Point(89, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 15);
+            this.label3.Size = new System.Drawing.Size(80, 15);
             this.label3.TabIndex = 8;
-            this.label3.Text = "ODBC Connection ";
+            this.label3.Text = "SQL Input File";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 54);
+            this.label2.Location = new System.Drawing.Point(27, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 15);
+            this.label2.Size = new System.Drawing.Size(142, 15);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Output Directory";
+            this.label2.Text = "Baseline Output Directory";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 95);
+            this.label1.Location = new System.Drawing.Point(62, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 15);
             this.label1.TabIndex = 8;
@@ -241,7 +241,7 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             // 
             // btnBrosweDest
             // 
-            this.btnBrosweDest.Location = new System.Drawing.Point(684, 51);
+            this.btnBrosweDest.Location = new System.Drawing.Point(731, 51);
             this.btnBrosweDest.Name = "btnBrosweDest";
             this.btnBrosweDest.Size = new System.Drawing.Size(30, 23);
             this.btnBrosweDest.TabIndex = 6;
@@ -251,7 +251,7 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             // 
             // btnBrowseSource
             // 
-            this.btnBrowseSource.Location = new System.Drawing.Point(684, 12);
+            this.btnBrowseSource.Location = new System.Drawing.Point(731, 16);
             this.btnBrowseSource.Name = "btnBrowseSource";
             this.btnBrowseSource.Size = new System.Drawing.Size(30, 23);
             this.btnBrowseSource.TabIndex = 7;
@@ -261,14 +261,14 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             // 
             // txtBaselineDest
             // 
-            this.txtBaselineDest.Location = new System.Drawing.Point(128, 51);
+            this.txtBaselineDest.Location = new System.Drawing.Point(175, 51);
             this.txtBaselineDest.Name = "txtBaselineDest";
             this.txtBaselineDest.Size = new System.Drawing.Size(550, 23);
             this.txtBaselineDest.TabIndex = 4;
             // 
             // txtSQLSource
             // 
-            this.txtSQLSource.Location = new System.Drawing.Point(128, 12);
+            this.txtSQLSource.Location = new System.Drawing.Point(175, 16);
             this.txtSQLSource.Name = "txtSQLSource";
             this.txtSQLSource.Size = new System.Drawing.Size(550, 23);
             this.txtSQLSource.TabIndex = 5;
