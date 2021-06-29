@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Rocket.RDVQA.Tools.Properties" GeneratedClassName="DBConnection">
+  <Profiles />
+  <Settings>
+    <Setting Name="Database" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RS28DDS9</Value>
+    </Setting>
+    <Setting Name="Server" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RS28.ROCKETSOFTWARE.COM</Value>
+    </Setting>
+    <Setting Name="Port" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">3725</Value>
+    </Setting>
+    <Setting Name="User" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TS8832</Value>
+    </Setting>
+    <Setting Name="Pwd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">73ed1ad78f7e2aae3d</Value>
+    </Setting>
+    <Setting Name="Setting" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DVMSubsystem" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DBA9</Value>
+    </Setting>
+    <Setting Name="DVMHost" Type="System.String" Scope="User">
+      <Value Profile="(Default)">RS28.ROCKETSOFTWARE.COM</Value>
+    </Setting>
+    <Setting Name="DVMPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">16201</Value>
+    </Setting>
+    <Setting Name="DVMDriver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Virtualization Manager Driver 3.2</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

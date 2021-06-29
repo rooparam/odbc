@@ -20,4 +20,4 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regression
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Debug\netcoreapp3.1\rdvqa-odbctools-regressionrunner.genruntimeconfig.cache
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Debug\netcoreapp3.1\testconfig.xml
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Debug\netcoreapp3.1\testconfig.xsd
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Debug\netcoreapp3.1\rdvqa-odbctools-regressionrunner.csprojAssemblyReference.cache
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Debug\netcoreapp3.1\rdvqa-odbctools-regressionrunner.csproj.AssemblyReference.cache

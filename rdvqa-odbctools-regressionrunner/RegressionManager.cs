@@ -305,6 +305,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                             }
                             else
                             {
+                                input = Environment.ExpandEnvironmentVariables(input);
                                 if (Directory.Exists(input))
                                 {
                                     RegressionSuites.Add(new RegressionSuite(name, input, output));

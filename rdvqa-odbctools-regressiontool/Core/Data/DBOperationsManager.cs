@@ -23,10 +23,10 @@ namespace Rocket.RDVQA.Tools.Core.Data
         }
         private void buildConnectionString()
         {
-            ConnectionString = "Database=" + DBConnection.Default.Database + ";";
-            ConnectionString += "Server=" + DBConnection.Default.Server + ":" + DBConnection.Default.Port + ";";
-            ConnectionString += "Uid=" + DBConnection.Default.User + ";";
-            ConnectionString += "Pwd=" + DBConnection.Default.Pwd + ";";
+            ConnectionString = "Database=" + DBConnectionProperties.Default.Database + ";";
+            ConnectionString += "Server=" + DBConnectionProperties.Default.Server + ":" + DBConnectionProperties.Default.Port + ";";
+            ConnectionString += "Uid=" + DBConnectionProperties.Default.User + ";";
+            ConnectionString += "Pwd=" + DBConnectionProperties.Default.Pwd + ";";
         }
 
         public DataTable GetDataConnections()

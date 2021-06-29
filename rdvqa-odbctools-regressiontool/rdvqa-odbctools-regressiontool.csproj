@@ -6,6 +6,8 @@
     <RootNamespace>Rocket.RDVQA.Tools</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <StartupObject>Rocket.RDVQA.Tools.ODBC.Program</StartupObject>
+    <Configurations>Debug;Release;x86</Configurations>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,10 +27,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.settings</DependentUpon>
     </Compile>
-    <Compile Update="Properties\DBConnection.Designer.cs">
+    <Compile Update="Properties\DBConnectioNProperties.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
-      <DependentUpon>DBConnection.settings</DependentUpon>
+      <DependentUpon>DBConnectionProperties.settings</DependentUpon>
     </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -54,9 +56,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Application.Designer.cs</LastGenOutput>
     </None>
-    <None Update="Properties\DBConnection.settings">
+    <None Update="Properties\DBConnectionProperties.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>DBConnection.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBConnectioNProperties.Designer.cs</LastGenOutput>
     </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

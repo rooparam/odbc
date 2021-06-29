@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.Odbc;
 using System.Data;
-using IBM.Data.DB2.Core;
 using Rocket.RDVQA.Tools.Properties;
 
 namespace Rocket.RDVQA.Tools.Core.Data
@@ -67,7 +66,7 @@ namespace Rocket.RDVQA.Tools.Core.Data
             DataTable dt = null;
             using (odbcConnection = new OdbcConnection(ConnectionString))
             {
-                using(OdbcCommand cmd = new OdbcCommand("Select ID,NAMER,CONNECTION_STRING from RDVQADB.CONNECTIONS",odbcConnection))
+                using(OdbcCommand cmd = new OdbcCommand("Select ID,NAME,CONNECTION_STRING from RDVQADB.CONNECTIONS",odbcConnection))
                 {
                     cmd.CommandType = CommandType.Text;
                     using (OdbcDataAdapter odbcDataAdapter = new OdbcDataAdapter(cmd))
@@ -86,5 +85,9 @@ namespace Rocket.RDVQA.Tools.Core.Data
               
         }
 
+        public static void RefreshTables()
+        {
+            DataTables.PopulateDataTables();
+        }
     }
 }

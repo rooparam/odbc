@@ -26,7 +26,12 @@ namespace Rocket.RDVQA.Tools.UI.Controls
         private LogWriter logWriter;
         public SuiteSelectionControl()
         {
+            // Define the cancellation token.
+            //TODO
+            CancellationTokenSource source = new CancellationTokenSource();
+            CancellationToken token = source.Token;
             regressionThread = new Thread(new ThreadStart(this.ThreadTask));
+            //source.Cancel()
 
             InitializeComponent();
             logWriter = new LogWriter(this.txtLog);
@@ -77,7 +82,7 @@ namespace Rocket.RDVQA.Tools.UI.Controls
 
         private void btnStopRegression_Click(object sender, EventArgs e)
         {
-            regressionThread.Interrupt();
+            regressionThread.Suspend();
             pnlListControl.Enabled = true;
         }
 

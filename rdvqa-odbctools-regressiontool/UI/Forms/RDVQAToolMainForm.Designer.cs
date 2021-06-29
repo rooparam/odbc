@@ -45,6 +45,7 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.MainContainer = new System.Windows.Forms.TabControl();
+            this.refreshTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mstrpMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,9 +103,10 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.menuRegressionRunner,
             this.menuBaselineBuilderBatch,
             this.menuTableViewer,
-            this.menuAddTCSQLDESelect});
+            this.menuAddTCSQLDESelect,
+            this.refreshTablesToolStripMenuItem});
             this.menuTools.Name = "menuTools";
-            this.menuTools.Size = new System.Drawing.Size(47, 20);
+            this.menuTools.Size = new System.Drawing.Size(46, 20);
             this.menuTools.Text = "Tools";
             // 
             // menuRegressionRunner
@@ -185,6 +187,13 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.MainContainer.Size = new System.Drawing.Size(1237, 815);
             this.MainContainer.TabIndex = 3;
             // 
+            // refreshTablesToolStripMenuItem
+            // 
+            this.refreshTablesToolStripMenuItem.Name = "refreshTablesToolStripMenuItem";
+            this.refreshTablesToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.refreshTablesToolStripMenuItem.Text = "Refresh Tables";
+            this.refreshTablesToolStripMenuItem.Click += new System.EventHandler(this.refreshTablesToolStripMenuItem_Click);
+            // 
             // RDVQAToolMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -223,5 +232,6 @@ namespace Rocket.RDVQA.Tools.UI.Forms
         private System.Windows.Forms.ToolStripMenuItem menuBaselineBuilderBatch;
         private System.Windows.Forms.ToolStripMenuItem menuTableViewer;
         private System.Windows.Forms.ToolStripMenuItem menuAddTCSQLDESelect;
+        private System.Windows.Forms.ToolStripMenuItem refreshTablesToolStripMenuItem;
     }
 }

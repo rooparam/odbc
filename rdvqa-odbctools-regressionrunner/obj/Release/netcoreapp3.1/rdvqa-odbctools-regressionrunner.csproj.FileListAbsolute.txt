@@ -1,7 +1,3 @@
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.deps.json
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.runtimeconfig.json
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.runtimeconfig.dev.json
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.exe
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.exe
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.deps.json
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.runtimeconfig.json
@@ -13,11 +9,8 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regression
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\runtimes\linux\lib\netcoreapp2.0\System.Data.Odbc.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\runtimes\osx\lib\netcoreapp2.0\System.Data.Odbc.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Data.Odbc.dll
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.dll
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-baselinebuilder.pdb
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\rdvqa-odbctools-hashgenerator.pdb
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.csprojAssemblyReference.cache
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.AssemblyInfoInputs.cache
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.AssemblyInfo.cs
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.csproj.CoreCompileInputs.cache
@@ -25,7 +18,6 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regression
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.pdb
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.genruntimeconfig.cache
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\baselineconfig.xml
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\baselineconfig.xsd
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\testconfig.xml
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\bin\Release\netcoreapp3.1\testconfig.xsd
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\obj\Release\netcoreapp3.1\rdvqa-odbctools-regressionrunner.csproj.AssemblyReference.cache

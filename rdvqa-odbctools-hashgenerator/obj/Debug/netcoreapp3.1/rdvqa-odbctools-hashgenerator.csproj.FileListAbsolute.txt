@@ -6,4 +6,4 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenera
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Debug\netcoreapp3.1\rdvqa-odbctools-hashgenerator.csproj.CoreCompileInputs.cache
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Debug\netcoreapp3.1\rdvqa-odbctools-hashgenerator.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Debug\netcoreapp3.1\rdvqa-odbctools-hashgenerator.pdb
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Debug\netcoreapp3.1\rdvqa-odbctools-hashgenerator.csprojAssemblyReference.cache
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-hashgenerator\obj\Debug\netcoreapp3.1\rdvqa-odbctools-hashgenerator.csproj.AssemblyReference.cache

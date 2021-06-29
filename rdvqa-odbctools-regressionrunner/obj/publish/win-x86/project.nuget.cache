@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "BnMRzqfsW3hWdHyeAkmZsx6qeQ/mdjbcrkWwwS6ToKweeC1kUnAk01cGFDpFCGFgmxRHb1veEbZ12KzlLQNEbQ==",
+  "dgSpecHash": "0PE+peDccdfiJdos0RrceNffq/kvldj/HEgQ3kO7zm3Z8bwKRJpbbO46wkl8IP8a+gb06CRJTPcNQTc7l6yESw==",
   "success": true,
   "projectFilePath": "C:\\Users\\skrishna\\source\\repos\\rdvqa-odbctools-dotnet\\rdvqa-odbctools-regressionrunner\\rdvqa-odbctools-regressionrunner.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
-    "C:\\Users\\skrishna\\.nuget\\packages\\system.data.odbc\\5.0.0\\system.data.odbc.5.0.0.nupkg.sha512"
+    "C:\\Users\\skrishna\\.nuget\\packages\\system.data.odbc\\5.0.0\\system.data.odbc.5.0.0.nupkg.sha512",
+    "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\3.1.16\\microsoft.netcore.app.runtime.win-x86.3.1.16.nupkg.sha512",
+    "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\3.1.16\\microsoft.windowsdesktop.app.runtime.win-x86.3.1.16.nupkg.sha512",
+    "C:\\Users\\skrishna\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\3.1.16\\microsoft.aspnetcore.app.runtime.win-x86.3.1.16.nupkg.sha512"
   ],
   "logs": []
 }

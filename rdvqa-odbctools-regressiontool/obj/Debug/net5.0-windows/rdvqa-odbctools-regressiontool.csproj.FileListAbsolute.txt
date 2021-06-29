@@ -144,4 +144,4 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regression
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\ref\rdvqa-odbctools-regressiontool.dll
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\rdvqa-odbctools-regressiontool.pdb
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\rdvqa-odbctools-regressiontool.genruntimeconfig.cache
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\rdvqa-odbctools-regressiontool.csprojAssemblyReference.cache
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\rdvqa-odbctools-regressiontool.csproj.AssemblyReference.cache

@@ -19,9 +19,10 @@ namespace Rocket.RDVQA.Tools.ODBC
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //DBManager.DataTables.PopulateDataTables();
+            
             Application.Run(new RDVQAToolMainForm());
             //_ = new ConnectionTester();
+
         }
     }
 }

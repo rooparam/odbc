@@ -8,6 +8,7 @@ using System.Data;
 using Rocket.RDVQA.Tools.Core;
 using Rocket.RDVQA.Tools.Core.Data;
 using Rocket.RDVQA.Tools.ODBC.Utils;
+using Microsoft.Win32;
 
 namespace Rocket.RDVQA.Tools.ODBC
 {
@@ -66,6 +67,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                 {
                     logger.WriteInfo("Exeuting " + tc.SQL);
                     odbcConnection = new(tc.ConnectionString);
+                    tableWriter.WriteLine("Connection String: " + tc.ConnectionString);
                     odbcConnection.Open();
                     odbcCommand = new(tc.SQL, odbcConnection);
                     int rowsAffected = odbcCommand.ExecuteNonQuery();
@@ -89,6 +91,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                 {
                     logger.WriteInfo("[SQL] "+tc.SQL);
                     logger.WriteError(ex.Message);
+                    logger.WriteError(ex.StackTrace);
                 }
             }
            
@@ -151,6 +154,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                     if (c.DataType == Type.GetType("System.String"))
                     {
                         tempStr = tempStr.Replace((char)0x00, ' ');
+                        tempStr = RemoveControlCharacters(tempStr);
                         //byte[] ba = Encoding.Default.GetBytes(tempStr);
                         //System.Windows.Forms.MessageBox.Show(BitConverter.ToString(ba));
                         rowData.Append(" " + tempStr.PadRight(columnWidth[idx++]) + " |");
@@ -171,5 +175,19 @@ namespace Rocket.RDVQA.Tools.ODBC
             tableWriter.WriteLine(horizontalSplitter.ToString());
             rowData.Clear();
         }
+        private string RemoveControlCharacters(string arg)
+        {
+            char[] arrForm = arg.ToCharArray();
+            StringBuilder buffer = new StringBuilder(arg.Length);//This many chars at most
+
+            foreach (char ch in arrForm)
+            {
+                if (!Char.IsControl(ch)) buffer.Append(ch);//Only add to buffer if not a control char
+                else buffer.Append(' ');
+            }
+
+            return buffer.ToString();
+        }
+        
     }
 }

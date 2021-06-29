@@ -74,6 +74,7 @@ namespace Rocket.RDVQA.Tools.ODBC
         /// </summary>
         private static void BuildBaseline()
         {
+            String statusText = "";
             static SQLTestCaseType SQLType(string keyword)
             {
                 return keyword.ToLower() switch
@@ -110,60 +111,100 @@ namespace Rocket.RDVQA.Tools.ODBC
                         string tcIDPfx = Path.GetFileNameWithoutExtension(testSuite);
                         string connectionString = GetConnectionString(env.Parms);
                         List<SQLTestCase> sqlTestcases = new List<SQLTestCase>();
+                        statusText = "SUCCESS";
                         Console.WriteLine("[ Info    ] Creating baseline for Test Suite " + tcIDPfx);
                         // Create ODBC connection
                         using OdbcConnection odbcConnection = new OdbcConnection(connectionString);
-                        odbcConnection.Open();
-                        foreach (string testCase in File.ReadAllLines(testSuite))
+                        try
                         {
-                            
-                            MemoryStream tempDataStream = new MemoryStream();
-                            StreamWriter fileWriter = new StreamWriter(tempDataStream);
-                            if (testCase.Trim().StartsWith("--"))
-                            { continue; }
-                            tcCount++;
-                            OdbcCommand odbcCommand = new OdbcCommand
+                            odbcConnection.Open();
+                            foreach (string testCase in File.ReadAllLines(testSuite))
                             {
-                                Connection = odbcConnection                                
-                            };
-                            odbcCommand.CommandText = testCase;
-                            DataSet resultSet = new DataSet();                            
-                            try
-                            {
-                                if(SQLType(testCase.Split(" ")[0])==SQLTestCaseType.CONFIG)
-                                {
-                                    string parm = testCase.Split(" ")[1];
-                                    switch(parm.ToUpper())
-                                    {
-                                        case "AUTO-ON":
-                                            break;
 
+                                MemoryStream tempDataStream = new MemoryStream();
+                                StreamWriter fileWriter = new StreamWriter(tempDataStream);
+                                if (testCase.Trim().StartsWith("--"))
+                                { continue; }
+                                tcCount++;
+                                OdbcCommand odbcCommand = new OdbcCommand
+                                {
+                                    Connection = odbcConnection
+                                };
+                                odbcCommand.CommandText = testCase;
+                                DataSet resultSet = new DataSet();
+                                try
+                                {
+                                    if (SQLType(testCase.Split(" ")[0]) == SQLTestCaseType.CONFIG)
+                                    {
+                                        string parm = testCase.Split(" ")[1];
+                                        switch (parm.ToUpper())
+                                        {
+                                            case "AUTO-ON":
+                                                break;
+
+                                        }
+                                    }
+                                    Console.WriteLine("[ Info    ] Creating baseline for Test Case " + (tcIDPfx + tcCount.ToString("D4")));
+                                    //Console.ForegroundColor = ConsoleColor.Green;
+
+                                    odbcCommand.ExecuteNonQuery();
+                                    new OdbcDataAdapter(odbcCommand).Fill(resultSet);
+                                    // write dataset to file                                
+                                    foreach (DataRow row in resultSet.Tables[0].Rows)
+                                    {
+                                        foreach (Object columnVal in row.ItemArray)
+                                        {
+                                            fileWriter.Write(columnVal);
+                                        }
                                     }
                                 }
-                                Console.WriteLine("[ Info    ] Creating baseline for Test Case " + (tcIDPfx + tcCount.ToString("D4")));
-                                odbcCommand.ExecuteNonQuery();                               
-                                new OdbcDataAdapter(odbcCommand).Fill(resultSet);
-                                // write dataset to file                                
-                                foreach (DataRow row in resultSet.Tables[0].Rows)
+                                catch (OdbcException ex)
                                 {
-                                    foreach (Object columnVal in row.ItemArray)
-                                    {
-                                        fileWriter.Write(columnVal);
-                                    }
-                                }                                
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
+                                    Console.WriteLine("[ Warning ] ODBCException caught for TC :" + (tcIDPfx + tcCount.ToString("D4")));
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("[ Debug   ] " + ex.Message);
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.WriteLine("[ Info    ] Verify the exception is an accepted test scenario.");
+
+                                    fileWriter.Write(ex.Message);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                                    Console.WriteLine("[ Error   ] System excpetion caught while executing TC: " + (tcIDPfx + tcCount.ToString("D4")));
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.WriteLine("[ Debug   ] " + ex.Message);
+                                    // try recreating connection
+                                    odbcConnection.Close();
+                                    odbcConnection.Open();
+                                }
+                                Console.ForegroundColor = ConsoleColor.White;
+
+                                fileWriter.Flush();
+                                tempDataStream.Position = 0;
+                                String hash = HashGenerator.GenerateSha256(tempDataStream);
+                                tempDataStream.Close();
+                                sqlTestcases.Add(new SQLTestCase(tcIDPfx + tcCount.ToString("D4"), SQLType(testCase.Split(" ")[0]), hash, testCase, ""));
+                                odbcCommand.Dispose();
                             }
-                            catch(OdbcException ex)
-                            {
-                                fileWriter.Write(ex.Message);
-                            }
-                            fileWriter.Flush();
-                            tempDataStream.Position = 0;
-                            String hash = HashGenerator.GenerateSha256(tempDataStream);
-                            tempDataStream.Close();
-                            sqlTestcases.Add(new SQLTestCase(tcIDPfx + tcCount.ToString("D4"), SQLType(testCase.Split(" ")[0]),hash,testCase,""));
-                            odbcCommand.Dispose();
+                        }
+                        catch(OdbcException ex)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("[ Error   ] ODBC excpetion caught while creating a connection");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("[ Debug   ] " + ex.Message);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("[ Error   ] System excpetion caught while creating a connection");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("[ Debug   ] " + ex.Message);
                         }
                         odbcConnection.Close();
+                        Console.ForegroundColor = ConsoleColor.White;
 
                         // build baseline file for testsuite
 
@@ -172,6 +213,7 @@ namespace Rocket.RDVQA.Tools.ODBC
 
                         WriteBaselineFileAsync(outFile,connectionString, sqlTestcases);
                         Console.WriteLine("[ Info    ] Creating baseline for Test Suite '{0}' completed.", tcIDPfx);
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     Console.WriteLine("[ Info    ] Baseline build completed.");
                 }

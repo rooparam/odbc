@@ -33,13 +33,15 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             //
             // initialize cmbConnections
             //
-            cmbConnections.DataSource = DBManager.DataTables.DTConnections;
+            //cmbConnections.DataSource = DBManager.DataTables.DTConnections;
+            cmbConnections.DataSource = ApplicationDBManager.RDVQADB.DTConnections;
             cmbConnections.DisplayMember = "name";
             cmbConnections.ValueMember = "ID";
             //
             // initalize cmbDatasources
             //
-            cmbDatasources.DataSource = DBManager.DataTables.DTDsTypes;
+            //cmbDatasources.DataSource = DBManager.DataTables.DTDsTypes;
+            cmbDatasources.DataSource = ApplicationDBManager.RDVQADB.DTDsTypes;
             cmbDatasources.DisplayMember = "name";
             cmbDatasources.ValueMember = "ID";
         }
@@ -50,7 +52,8 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             btnTestQueries.Enabled = false;
             btnTestQueries.Text = "Execution in Progress";
             int connId = Convert.ToInt32(cmbConnections.SelectedValue.ToString());
-            string connectionString = DBManager.DataTables.DTConnections.Select("ID="+ connId)[0][2].ToString();
+            //string connectionString = DBManager.DataTables.DTConnections.Select("ID="+ connId)[0][2].ToString();
+            string connectionString = ApplicationDBManager.RDVQADB.DTConnections.Select("ID="+ connId)[0][2].ToString();
             string[] queries = txtQueries.Lines;
             candTestCases = new List<SQLDeSelectTestCase>();
             foreach(string query in txtQueries.Lines)
@@ -123,6 +126,11 @@ namespace Rocket.RDVQA.Tools.UI.Controls
         {
             NewTestSuite newTestSuite = new NewTestSuite();
             newTestSuite.ShowDialog();
+        }
+
+        private void txtResults_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

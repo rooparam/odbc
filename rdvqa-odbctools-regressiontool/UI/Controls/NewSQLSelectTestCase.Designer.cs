@@ -30,18 +30,19 @@ namespace Rocket.RDVQA.Tools.UI.Controls
         private void InitializeComponent()
         {
             this.pnlControlPanel = new System.Windows.Forms.Panel();
-            this.btnAddTCs = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbxQueries = new System.Windows.Forms.GroupBox();
             this.txtQueries = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTestQueries = new System.Windows.Forms.Button();
+            this.btnAddTCs = new System.Windows.Forms.Button();
             this.btnAddTestSuites = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbTestSuites = new System.Windows.Forms.ComboBox();
             this.btnNewDataSource = new System.Windows.Forms.Button();
             this.btnNewConnection = new System.Windows.Forms.Button();
-            this.btnTestQueries = new System.Windows.Forms.Button();
             this.txtTags = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbConnections = new System.Windows.Forms.ComboBox();
@@ -59,6 +60,7 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.splitContainer1.SuspendLayout();
             this.gbxQueries.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tabStats.SuspendLayout();
             this.tpageLog.SuspendLayout();
             this.tpageResult.SuspendLayout();
@@ -71,17 +73,6 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.pnlControlPanel.Name = "pnlControlPanel";
             this.pnlControlPanel.Size = new System.Drawing.Size(883, 47);
             this.pnlControlPanel.TabIndex = 15;
-            // 
-            // btnAddTCs
-            // 
-            this.btnAddTCs.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddTCs.Location = new System.Drawing.Point(183, 288);
-            this.btnAddTCs.Name = "btnAddTCs";
-            this.btnAddTCs.Size = new System.Drawing.Size(150, 33);
-            this.btnAddTCs.TabIndex = 14;
-            this.btnAddTCs.Text = "Add Test Cases";
-            this.btnAddTCs.UseVisualStyleBackColor = true;
-            this.btnAddTCs.Click += new System.EventHandler(this.btnAddTCs_Click);
             // 
             // splitter1
             // 
@@ -140,13 +131,12 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.btnAddTestSuites);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cmbTestSuites);
             this.groupBox1.Controls.Add(this.btnNewDataSource);
             this.groupBox1.Controls.Add(this.btnNewConnection);
-            this.groupBox1.Controls.Add(this.btnAddTCs);
-            this.groupBox1.Controls.Add(this.btnTestQueries);
             this.groupBox1.Controls.Add(this.txtTags);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cmbConnections);
@@ -163,6 +153,40 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection/TC Attributes";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnTestQueries);
+            this.panel1.Controls.Add(this.btnAddTCs);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(10, 280);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(323, 41);
+            this.panel1.TabIndex = 35;
+            // 
+            // btnTestQueries
+            // 
+            this.btnTestQueries.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnTestQueries.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTestQueries.Location = new System.Drawing.Point(0, 0);
+            this.btnTestQueries.Name = "btnTestQueries";
+            this.btnTestQueries.Size = new System.Drawing.Size(148, 41);
+            this.btnTestQueries.TabIndex = 31;
+            this.btnTestQueries.Text = "Test Query(s)";
+            this.btnTestQueries.UseVisualStyleBackColor = true;
+            this.btnTestQueries.Click += new System.EventHandler(this.btnTestQueries_Click);
+            // 
+            // btnAddTCs
+            // 
+            this.btnAddTCs.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAddTCs.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddTCs.Location = new System.Drawing.Point(173, 0);
+            this.btnAddTCs.Name = "btnAddTCs";
+            this.btnAddTCs.Size = new System.Drawing.Size(150, 41);
+            this.btnAddTCs.TabIndex = 15;
+            this.btnAddTCs.Text = "Add Test Cases";
+            this.btnAddTCs.UseVisualStyleBackColor = true;
+            this.btnAddTCs.Click += new System.EventHandler(this.btnAddTCs_Click);
             // 
             // btnAddTestSuites
             // 
@@ -213,17 +237,6 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.btnNewConnection.Text = "Ë";
             this.btnNewConnection.UseVisualStyleBackColor = true;
             this.btnNewConnection.Click += new System.EventHandler(this.btnNewConnection_Click);
-            // 
-            // btnTestQueries
-            // 
-            this.btnTestQueries.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTestQueries.Location = new System.Drawing.Point(10, 288);
-            this.btnTestQueries.Name = "btnTestQueries";
-            this.btnTestQueries.Size = new System.Drawing.Size(148, 33);
-            this.btnTestQueries.TabIndex = 30;
-            this.btnTestQueries.Text = "Test Query(s)";
-            this.btnTestQueries.UseVisualStyleBackColor = true;
-            this.btnTestQueries.Click += new System.EventHandler(this.btnTestQueries_Click);
             // 
             // txtTags
             // 
@@ -330,9 +343,12 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.txtResults.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtResults.Location = new System.Drawing.Point(3, 3);
             this.txtResults.Name = "txtResults";
+            this.txtResults.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.txtResults.Size = new System.Drawing.Size(869, 248);
             this.txtResults.TabIndex = 0;
             this.txtResults.Text = "";
+            this.txtResults.WordWrap = false;
+            this.txtResults.TextChanged += new System.EventHandler(this.txtResults_TextChanged);
             // 
             // NewSQLSelectTestCase
             // 
@@ -352,6 +368,7 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.gbxQueries.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.tabStats.ResumeLayout(false);
             this.tpageLog.ResumeLayout(false);
             this.tpageResult.ResumeLayout(false);
@@ -361,7 +378,6 @@ namespace Rocket.RDVQA.Tools.UI.Controls
 
         #endregion
         private System.Windows.Forms.Panel pnlControlPanel;
-        private System.Windows.Forms.Button btnAddTCs;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label3;
@@ -378,11 +394,13 @@ namespace Rocket.RDVQA.Tools.UI.Controls
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox gbxQueries;
         private System.Windows.Forms.TextBox txtQueries;
-        private System.Windows.Forms.Button btnTestQueries;
         private System.Windows.Forms.Button btnNewDataSource;
         private System.Windows.Forms.Button btnNewConnection;
         private System.Windows.Forms.Button btnAddTestSuites;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbTestSuites;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnTestQueries;
+        private System.Windows.Forms.Button btnAddTCs;
     }
 }

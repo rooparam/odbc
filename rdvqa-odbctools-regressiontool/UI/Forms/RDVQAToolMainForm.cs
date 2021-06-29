@@ -71,5 +71,10 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.MainContainer.TabPages.Add("New SQL Select TC (DirectExec) - ");
             this.MainContainer.TabPages[pageCount].Controls.Add(newSQLSelectTestCase);
         }
+
+        private void refreshTablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Rocket.RDVQA.Tools.Core.Data.DBManager.RefreshTables();
+        }
     }
 }

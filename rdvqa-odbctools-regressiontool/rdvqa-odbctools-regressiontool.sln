@@ -3,18 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rdvqa-odbctools-regressiontool", "rdvqa-odbctools-regressiontool.csproj", "{839503C8-F0F5-457E-A1C7-44C0F362050C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rdvqa-odbctools-regressiontool", "rdvqa-odbctools-regressiontool.csproj", "{839503C8-F0F5-457E-A1C7-44C0F362050C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+		x86|Any CPU = x86|Any CPU
+		x86|x86 = x86|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Debug|x86.ActiveCfg = Debug|x86
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Debug|x86.Build.0 = Debug|x86
 		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Release|x86.ActiveCfg = Release|x86
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.Release|x86.Build.0 = Release|x86
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.x86|Any CPU.ActiveCfg = Debug|Any CPU
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.x86|Any CPU.Build.0 = Debug|Any CPU
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.x86|x86.ActiveCfg = Debug|x86
+		{839503C8-F0F5-457E-A1C7-44C0F362050C}.x86|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
