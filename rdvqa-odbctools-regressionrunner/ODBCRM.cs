@@ -23,7 +23,7 @@ namespace Rocket.RDVQA.Tools.ODBC
         {
             if (args.Length < 1)
             {
-                Console.WriteLine("Usage is: BaselineBuilder cfgxml=fullpath_to_config");
+                Console.WriteLine("Usage is: RegressionRunner cfgxml=fullpath_to_config");
                 Console.WriteLine("Note: Enclose the path in quotes if path contain blank character.");
                 Console.WriteLine("The format for config xml is as follows:");
                 Console.WriteLine("<config>\n\t<regession_suite name=\"suite_name\" description=\"\">\n\t\t" +

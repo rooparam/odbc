@@ -16,7 +16,7 @@ using Rocket.RDVQA.Tools.UI.Forms;
 
 namespace Rocket.RDVQA.Tools.UI.Controls
 {
-    public partial class NewSQLSelectTestCase : UserControl
+    public partial class EasyBaselineBuilder : UserControl
     {
         private RDVQAQueryManager queryManager;
         private delegate void SafeCallDelegate(string text);
@@ -24,12 +24,12 @@ namespace Rocket.RDVQA.Tools.UI.Controls
         private LogWriter executionLog;
         private LogWriter executionResult;
         private LogWriter baselineWriter;
-        public NewSQLSelectTestCase()
+        public EasyBaselineBuilder()
         {
             InitializeComponent();
             executionLog = new LogWriter(this.txtLog);
             executionResult = new LogWriter(this.txtResults);
-            baselineWriter = new LogWriter(this.txtBaseline);
+            baselineWriter = new LogWriter(this.txtResults);
             queryManager = new RDVQAQueryManager(executionLog,executionResult, baselineWriter);
 
             //
@@ -60,7 +60,7 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             candTestCases = new List<SQLDeSelectTestCase>();
             foreach(string query in txtQueries.Lines)
             {
-                if (!string.IsNullOrWhiteSpace(query) && !query.Trim().StartsWith("--"))
+                if (!string.IsNullOrWhiteSpace(query))
                 {
                     SQLDeSelectTestCase tc = new SQLDeSelectTestCase(query, Convert.ToInt32(cmbDatasources.SelectedValue.ToString()), txtTags.Text, connId, connectionString);
                     candTestCases.Add(tc);

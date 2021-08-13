@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using System.Xml.Schema;
 using Rocket.RDVQA.Tools.Report;
 using Rocket.RDVQA.Utils;
+using System.Runtime.InteropServices;
 
 namespace Rocket.RDVQA.Tools.ODBC
 {
@@ -306,6 +307,12 @@ namespace Rocket.RDVQA.Tools.ODBC
                             else
                             {
                                 input = Environment.ExpandEnvironmentVariables(input);
+                                if(RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                                {
+                                    input = input.Replace('\\', '/');
+                                    output = output.Replace('\\', '/');
+                                }
+                               
                                 if (Directory.Exists(input))
                                 {
                                     RegressionSuites.Add(new RegressionSuite(name, input, output));
@@ -453,7 +460,8 @@ namespace Rocket.RDVQA.Tools.ODBC
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("[ Error   ] {0}", ex.Message);
+                        Console.WriteLine("[ Error   ] "+ ex.Message);
+                        Console.WriteLine("[ Error   ] "+ ex.StackTrace);
                         tseRecord.Comment = "Testcase execution interrupted by exception: " + ex.Message;
                     }
                 }

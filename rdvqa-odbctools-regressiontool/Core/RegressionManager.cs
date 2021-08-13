@@ -12,50 +12,11 @@ using System.Threading;
 //using Rocket.RDVQA.Tools.Report;
 using Rocket.RDVQA.Tools.ODBC.Utils;
 using Rocket.RDVQA.Tools.Core;
+using Rocket.RDVQA.Tools.Core.Components;
 
 namespace Rocket.RDVQA.Tools.ODBC
 {
-    enum SQLTestCaseType
-    {
-        SELECT,
-        INSERT,
-        DELETE,
-        UPDATE,
-        CONFIG
-    }
-    internal class SQLTestCase
-    {
-        public SQLTestCase(string id, SQLTestCaseType type, string hash, string query, string verificationQuery)
-        {
-            ID = id;
-            Hash = hash;
-            Query = query;
-            VerficationQuery = verificationQuery;
-            TestCaseType = type;
-            IsEnabled = true;
-        }
-        public string ID { get; }
-        public string Hash { get; }
-        public string Query { get; }
-        public string VerficationQuery { get; }
-        public SQLTestCaseType TestCaseType { get; }
-        public bool IsEnabled { get; set; }
-    }
-    internal class TestSuite
-    {
-        public TestSuite(string name, string connectionString, List<SQLTestCase> testcases)
-        {
-            Name = name;
-            ConnectionString = connectionString;
-            TestCases = testcases is null ? new List<SQLTestCase>() : testcases;
-            IsEnabled = true;
-        }
-
-        public string Name { get; private set; }
-        public string ConnectionString { get; private set; }
-        public List<SQLTestCase> TestCases { get; private set; }
-        public bool IsEnabled { get; set; }
-    }
+   
     internal class RegressionSuite
     {
         public RegressionSuite(string name, string inputPath, string outputPath)
@@ -130,92 +91,6 @@ namespace Rocket.RDVQA.Tools.ODBC
         }
     }
 
-    internal class TestCaseExecutionRecord
-    {
-        public TestCaseExecutionRecord(string tcid, string comment, bool pass)
-        {
-            ID = tcid;
-            Comment = comment;
-            Pass = pass;
-        }
-        public string ID { get; private set; }
-        public string Comment { get; set; }
-        public bool Pass { get; set; }
-    }
-    internal class TestSuiteExecutionRecord
-    {
-        private List<TestCaseExecutionRecord> TestCaseExecutionRecords;
-
-        public TestSuiteExecutionRecord(string suiteName)
-        {
-            TestCaseExecutionRecords = new List<TestCaseExecutionRecord>();
-            Name = suiteName;
-        }
-
-        public string Name { get; private set; }
-        public string Comment { get; set; }
-        public int TestCaseCount()
-        {
-            return TestCaseExecutionRecords.Count;
-        }
-
-        public void AddTestCaseExecutionRecord(TestCaseExecutionRecord tceRecord)
-        {
-            TestCaseExecutionRecords.Add(tceRecord);
-        }
-        public int PassTCCount()
-        {
-            int _ = 0;
-            foreach (TestCaseExecutionRecord tceRecord in TestCaseExecutionRecords)
-            {
-                _ += tceRecord.Pass ? 1 : 0;
-            }
-            return _;
-        }
-
-        internal void BuildReportTable()
-        {
-            throw new NotImplementedException();
-        }
-    }
-    internal class RegressionSuiteExecutionRecord
-    {
-        public RegressionSuiteExecutionRecord(string suiteName)
-        {
-            TestSuiteExecutionRecords = new List<TestSuiteExecutionRecord>();
-            Name = suiteName;
-        }
-
-        public string Name { get; private set; }
-        public string Comment { get; set; }
-        public List<TestSuiteExecutionRecord> TestSuiteExecutionRecords { get; private set; }
-        public void AddTestSuiteExecutionRecord(TestSuiteExecutionRecord tseRecord)
-        {
-            TestSuiteExecutionRecords.Add(tseRecord);
-        }
-        public int TestSuiteCount()
-        {
-            return TestSuiteExecutionRecords.Count;
-        }
-
-        public int TestCaseCount()
-        {
-            int _ = 0;
-            foreach (TestSuiteExecutionRecord tseRecord in TestSuiteExecutionRecords)
-            {
-                _ += tseRecord.TestCaseCount();
-            }
-            return _;
-        }
-
-        public void BuildReportTables()
-        {
-            foreach (TestSuiteExecutionRecord tseRecord in TestSuiteExecutionRecords)
-            {
-                tseRecord.BuildReportTable();
-            }
-        }
-    }
     internal class RegressionManager
     {
         private List<RegressionSuiteExecutionRecord> RegressionSuiteExecutionRecords;

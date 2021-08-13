@@ -1,7 +1,7 @@
 ﻿
 namespace Rocket.RDVQA.Tools.UI.Controls
 {
-    partial class NewSQLSelectTestCase
+    partial class EasyBaselineBuilder
     {
         /// <summary> 
         /// Required designer variable.
@@ -54,8 +54,6 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.tpageResult = new System.Windows.Forms.TabPage();
             this.txtResults = new System.Windows.Forms.RichTextBox();
-            this.tpageBaseline = new System.Windows.Forms.TabPage();
-            this.txtBaseline = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,7 +64,6 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.tabStats.SuspendLayout();
             this.tpageLog.SuspendLayout();
             this.tpageResult.SuspendLayout();
-            this.tpageBaseline.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlControlPanel
@@ -125,7 +122,6 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.txtQueries.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtQueries.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtQueries.Location = new System.Drawing.Point(3, 19);
-            this.txtQueries.MaxLength = 268435455;
             this.txtQueries.Multiline = true;
             this.txtQueries.Name = "txtQueries";
             this.txtQueries.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -297,7 +293,6 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             // 
             this.tabStats.Controls.Add(this.tpageLog);
             this.tabStats.Controls.Add(this.tpageResult);
-            this.tabStats.Controls.Add(this.tpageBaseline);
             this.tabStats.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabStats.Location = new System.Drawing.Point(0, 0);
             this.tabStats.Name = "tabStats";
@@ -355,29 +350,6 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.txtResults.WordWrap = false;
             this.txtResults.TextChanged += new System.EventHandler(this.txtResults_TextChanged);
             // 
-            // tpageBaseline
-            // 
-            this.tpageBaseline.Controls.Add(this.txtBaseline);
-            this.tpageBaseline.Location = new System.Drawing.Point(4, 24);
-            this.tpageBaseline.Name = "tpageBaseline";
-            this.tpageBaseline.Padding = new System.Windows.Forms.Padding(3);
-            this.tpageBaseline.Size = new System.Drawing.Size(875, 254);
-            this.tpageBaseline.TabIndex = 2;
-            this.tpageBaseline.Text = "Baseline";
-            this.tpageBaseline.UseVisualStyleBackColor = true;
-            // 
-            // txtBaseline
-            // 
-            this.txtBaseline.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBaseline.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtBaseline.Location = new System.Drawing.Point(3, 3);
-            this.txtBaseline.Name = "txtBaseline";
-            this.txtBaseline.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.txtBaseline.Size = new System.Drawing.Size(869, 248);
-            this.txtBaseline.TabIndex = 1;
-            this.txtBaseline.Text = "";
-            this.txtBaseline.WordWrap = false;
-            // 
             // NewSQLSelectTestCase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -400,7 +372,6 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.tabStats.ResumeLayout(false);
             this.tpageLog.ResumeLayout(false);
             this.tpageResult.ResumeLayout(false);
-            this.tpageBaseline.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -431,7 +402,5 @@ namespace Rocket.RDVQA.Tools.UI.Controls
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnTestQueries;
         private System.Windows.Forms.Button btnAddTCs;
-        private System.Windows.Forms.TabPage tpageBaseline;
-        private System.Windows.Forms.RichTextBox txtBaseline;
     }
 }

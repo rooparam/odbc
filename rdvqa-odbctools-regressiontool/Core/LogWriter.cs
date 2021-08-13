@@ -26,7 +26,7 @@ namespace Rocket.RDVQA.Tools.Core
             if (MyControl.InvokeRequired)
             {
                 var d = new SafeCallDelegate(Write);
-                MyControl.Invoke(d, new object[] { value });
+                MyControl.Invoke(d, new object[] { value.ToString() });
             }
             else
             {

@@ -145,3 +145,4 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regression
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\rdvqa-odbctools-regressiontool.pdb
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\rdvqa-odbctools-regressiontool.genruntimeconfig.cache
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\rdvqa-odbctools-regressiontool.csproj.AssemblyReference.cache
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\Rocket.RDVQA.Tools.UI.Controls.EasyBaselineBuilder.resources

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using Rocket.RDVQA.Tools.ODBC;
 using Rocket.RDVQA.Tools.Core;
+using Rocket.RDVQA.Tools.Core.Components;
 
 namespace Rocket.RDVQA.Tools.UI.Controls
 {

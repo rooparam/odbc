@@ -38,15 +38,21 @@ namespace Rocket.RDVQA.Tools.ODBC.Utils
         {
             MemoryStream tempDataStream = new MemoryStream();
             StreamWriter fileWriter = new StreamWriter(tempDataStream);
+            var fileStream = new FileStream(@"C:\Users\skrishna\AppData\Local\Temp\SHAHIN.txt", FileMode.OpenOrCreate);
+            var streamWriter = new StreamWriter(fileStream);
             foreach (DataRow row in dt.Rows)
             {
                 foreach (Object columnVal in row.ItemArray)
                 {
                     fileWriter.Write(columnVal);
+                    streamWriter.Write(columnVal);
                 }
-            }
+            }            
             fileWriter.Flush();
+            streamWriter.Flush();
+            fileStream.Close();
             tempDataStream.Position = 0;
+
             return GenerateSha256(tempDataStream);
         }
     }
