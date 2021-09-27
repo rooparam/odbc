@@ -11,6 +11,8 @@ using Rocket.RDVQA.Tools.ODBC.Utils;
 using Microsoft.Win32;
 using System.Globalization;
 using System.Threading;
+using System.Collections.Concurrent;
+using Rocket.RDVQA.Tools.Core.Components;
 
 namespace Rocket.RDVQA.Tools.ODBC
 {
@@ -185,110 +187,235 @@ namespace Rocket.RDVQA.Tools.ODBC
             return resultSet;
         }
 
-        public DataSet ExecuteBatchSelect(List<SQLDeSelectTestCase> testCases)
+        public DataSet ExecuteBatchSelect(String testSuite, String connectioNString, List<SQLDeSelectTestCase> testCases)
         {
             DataSet resultSet = new();
-            int tIdx = 0;
-            OdbcConnection odbcConnection;
-            OdbcCommand odbcCommand;
+            int tIdx = -1;
+            OdbcConnection odbcConnection = null;
+            OdbcCommand odbcCommand = null;
             // Create a scheduler that uses two threads.
             lcts = new LimitedConcurrencyLevelTaskScheduler(1);
             factory = new TaskFactory(lcts);
             cts = new CancellationTokenSource();
             tasks = new List<Task>();
-            Object lockObj = new Object();
-
+            Object lockObj = new();
+            baselineWriter.WriteLine("#"+connectioNString);
             foreach (SQLDeSelectTestCase tc in testCases)
             {
-                //tableWriter.WriteLine("Connection String: " + tc.ConnectionString);
-                try
+                if (!string.IsNullOrEmpty(tc.SQL.Trim()))
                 {
-                    logger.WriteInfo("Exeuting " + tc.SQL);
-                    odbcConnection = new(tc.ConnectionString);
-                    odbcConnection.Open();
-                    odbcCommand = new(tc.SQL, odbcConnection);
-                    int rowsAffected = odbcCommand.ExecuteNonQuery();
+                    tIdx++;
                     resultSet.Tables.Add(new DataTable());
-                    new OdbcDataAdapter(odbcCommand).Fill(resultSet.Tables[tIdx++]);
+                    try
+                    {
+                        logger.WriteInfo("Exeuting " + tc.SQL);
+                        if (odbcConnection is null)
+                        {
+                            odbcConnection = new(tc.ConnectionString);
+                            odbcConnection.Open();
+                        }
+                        odbcCommand = new(tc.SQL, odbcConnection);
+                        int rowsAffected = odbcCommand.ExecuteNonQuery();
+                        //logger.WriteInfo(resultSet.Tables[tIdx].Rows.Count + " records fetched.");
 
-                    tc.Hash = HashGenerator.GenerateSha256(resultSet.Tables[tIdx - 1]);
-                    
-                    logger.WriteInfo(resultSet.Tables[tIdx - 1].Rows.Count+" records fetched." );
-                    logger.WriteInfo("Hash : "+tc.Hash);
-                    logger.WriteInfo("Execution complete.");
-                    Task task = Task.Factory.StartNew(() => {
-                        lock (lockObj) { PrintTable(tc, resultSet.Tables[tIdx - 1]); }
-                        //tableWriter.WriteLine("Hash : " + tc.Hash);
-                    },cts.Token);
-                    tasks.Add(task);
+                        new OdbcDataAdapter(odbcCommand).Fill(resultSet.Tables[tIdx]);
+                        tc.Hash = HashGenerator.GenerateSha256(resultSet.Tables[tIdx]);
+                        baselineWriter.WriteLine(testSuite+tIdx.ToString("D4") + ";" +SQLTestCase.GetType(tc.SQL.Trim('(').Split()[0])+";"+tc.Hash + ";" + tc.SQL+";");
+                        logger.WriteInfo("Hash : " + tc.Hash);
+                        logger.WriteInfo("Execution complete.");                        
+                        //tasks.Add(factory.StartNew(() => {
+                        //    lock (lockObj) { PrintTable(tc, resultSet.Tables[tIdx]); }
+                        //}, cts.Token));
+                        //taskQueue.Enqueue(Task.Factory.Scheduler);
+                        PrintTable(tc, resultSet.Tables[tIdx]);
+                        //tasks.Add(task);
 
+                        odbcCommand.Dispose();
+                        //odbcConnection.Dispose();
+                        //odbcConnection.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.WriteInfo("[Connection String] " + tc.ConnectionString);
+                        logger.WriteInfo("[SQL] " + tc.SQL);
+                        logger.WriteError(ex.Message);
+                        logger.WriteError(ex.StackTrace);
+                        try
+                        {
+                            logger.WriteInfo("Releasing command resources");
+                            if (odbcCommand is not null)
+                                odbcCommand.Dispose();
+                            logger.WriteInfo("Releasing connection resources");
+                            if (odbcConnection is not null)
+                            {
+                                odbcConnection.Dispose();
+                                odbcConnection.Close();
+                            }
+                            logger.WriteInfo("Closing connection");
+                            odbcConnection = null;
+                        }
+                        catch (Exception e)
+                        {
+                            logger.WriteError(e.Message);
+                        }
+                    }
+                }
+            }
+            try
+            {
+                if(odbcCommand is not null)
                     odbcCommand.Dispose();
+                if(odbcConnection is not null)
                     odbcConnection.Close();
-                }
-                catch (Exception ex)
-                {
-                    logger.WriteInfo("[Connection String] "+tc.ConnectionString);
-                    logger.WriteInfo("[SQL] "+tc.SQL);
-                    logger.WriteError(ex.Message);
-                    logger.WriteError(ex.StackTrace);
-                }
+            }
+            catch(Exception ex)
+            {
+
             }
             cts.Dispose();
             return resultSet;
         }
+        public DataSet ExecuteBatchSelectUsingDataReader(List<SQLDeSelectTestCase> testCases)
+        {
+            DataSet resultSet = new();
+            int tIdx = -1;
+            OdbcConnection odbcConnection = null;
+            OdbcCommand odbcCommand = null;
+            // Create a scheduler that uses two threads.
+            lcts = new LimitedConcurrencyLevelTaskScheduler(1);
+            factory = new TaskFactory(lcts);
+            cts = new CancellationTokenSource();
+            tasks = new List<Task>();
+            Object lockObj = new();
+            foreach (SQLDeSelectTestCase tc in testCases)
+            {
+                if (!string.IsNullOrEmpty(tc.SQL.Trim()))
+                {
+                    tIdx++;
+                    resultSet.Tables.Add(new DataTable());
+                    try
+                    {
+                        logger.WriteInfo("Exeuting " + tc.SQL);
+                        if (odbcConnection is null)
+                        {
+                            odbcConnection = new(tc.ConnectionString);
+                            odbcConnection.Open();
+                        }
+                        odbcCommand = new(tc.SQL, odbcConnection);
+                        OdbcDataReader odbcDataReader = odbcCommand.ExecuteReader();
+                        resultSet.Tables[tIdx].Load(odbcDataReader);
 
+                        tc.Hash = HashGenerator.GenerateSha256(resultSet.Tables[tIdx]);
+
+                        logger.WriteInfo(resultSet.Tables[tIdx].Rows.Count + " records fetched.");
+                        logger.WriteInfo("Hash : " + tc.Hash);
+                        logger.WriteInfo("Execution complete.");
+                        //tasks.Add(factory.StartNew(() => {
+                        //    lock (lockObj) { PrintTable(tc, resultSet.Tables[tIdx]); }
+                        //}, cts.Token));
+                        //taskQueue.Enqueue(Task.Factory.Scheduler);
+                        PrintTable(tc, resultSet.Tables[tIdx]);
+                        //tasks.Add(task);
+
+                        odbcCommand.Dispose();
+                        //odbcConnection.Dispose();
+                        //odbcConnection.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.WriteInfo("[Connection String] " + tc.ConnectionString);
+                        logger.WriteInfo("[SQL] " + tc.SQL);
+                        logger.WriteError(ex.Message);
+                        logger.WriteError(ex.StackTrace);
+                        try
+                        {
+                            logger.WriteInfo("Releasing command resources");
+                            if (odbcCommand is not null)
+                                odbcCommand.Dispose();
+                            logger.WriteInfo("Releasing connection resources");
+                            if (odbcConnection is not null)
+                            {
+                                odbcConnection.Dispose();
+                                odbcConnection.Close();
+                            }
+                            logger.WriteInfo("Closing connection");
+                            odbcConnection = null;
+                        }
+                        catch (Exception e)
+                        {
+                            logger.WriteError(e.Message);
+                        }
+                    }
+                }
+            }
+            try
+            {
+                if (odbcCommand is not null)
+                    odbcCommand.Dispose();
+                if (odbcConnection is not null)
+                    odbcConnection.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            cts.Dispose();
+            return resultSet;
+        }
         private void PrintTable(SQLDeSelectTestCase tc, DataTable dt)
         {
-            int[] columnWidth = new int[dt.Columns.Count];
+            int[] columnWidth  = new int[dt.Columns.Count]; 
             int idx = 0;
             StringBuilder horizontalSplitter = new StringBuilder("+");
             StringBuilder colHeader = new StringBuilder("|");
             StringBuilder rowData = new StringBuilder();
             DataTableReader dr = dt.CreateDataReader();
-            foreach (DataColumn c in dt.Columns)
             {
-                if (c.DataType == Type.GetType("System.DateTime"))
+                foreach (DataColumn c in dt.Columns)
                 {
-                    columnWidth[idx] = 28;
-                }               
-                else if (dt.Rows.Count > 0)
-                {
-                    if (c.DataType == Type.GetType("System.Byte[]"))
+                    if (c.DataType == Type.GetType("System.DateTime"))
                     {
-                        columnWidth[idx] = Math.Max(c.ColumnName.Length, 2 *((Byte[])dt.Rows[0][c.ColumnName]).Length);
+                        columnWidth[idx] = 28;
+                    }
+                    else if (dt.Rows.Count > 0)
+                    {
+                        if (c.DataType == Type.GetType("System.Byte[]"))
+                        {
+                            columnWidth[idx] = Math.Max(c.ColumnName.Length, 2 * ((Byte[])dt.Rows[0][c.ColumnName]).Length);
+                        }
+                        else
+                        {
+                            columnWidth[idx] = Math.Max(c.ColumnName.Length, dt.AsEnumerable()
+                                 .Select(row => row[c.ColumnName].ToString())
+                                 .OrderByDescending(st => st.ToString().Length).FirstOrDefault().Length);
+                        }
+
                     }
                     else
                     {
-                        columnWidth[idx] = Math.Max(c.ColumnName.Length, dt.AsEnumerable()
-                             .Select(row => row[c.ColumnName].ToString())
-                             .OrderByDescending(st => st.ToString().Length).FirstOrDefault().Length);
+                        columnWidth[idx] = c.ColumnName.Length;
                     }
-                    
+                    //columnWidth[idx] = tmpLength > columnWidth[idx] ? tmpLength : columnWidth[idx];
+                    horizontalSplitter.Append(new String('-', columnWidth[idx] + 2));
+                    horizontalSplitter.Append("+");
+                    idx++;
                 }
-                else
-                {
-                    columnWidth[idx] = c.ColumnName.Length;
-                }
-                //columnWidth[idx] = tmpLength > columnWidth[idx] ? tmpLength : columnWidth[idx];
-                horizontalSplitter.Append(new String('-', columnWidth[idx] + 2));
-                horizontalSplitter.Append("+");
-                idx++;
             }
             // print table name 
             tableWriter.WriteLine("Table             : " + dt.TableName);
             tableWriter.WriteLine("Connection String : " + tc.ConnectionString);
             tableWriter.WriteLine("Query             : " + tc.SQL);
             tableWriter.WriteLine("Hash              : " + tc.Hash);
-
-            if (dt.Rows.Count != 0)
+            //dt.GetChanges();
+            if (dt.Rows.Count > 0)
             {
                 //tableWriter.WriteLine("           ");
                 tableWriter.WriteLine(horizontalSplitter.ToString());
                 // write column names
-                idx = 0;
+                idx = -1;
                 foreach (DataColumn c in dt.Columns)
                 {
-                    colHeader.Append(" " + c.ColumnName.PadRight(columnWidth[idx++]) + " |");
+                    colHeader.Append(" " + c.ColumnName.PadRight(columnWidth[++idx]) + " |");
                 }
                 tableWriter.WriteLine(colHeader.ToString());
                 tableWriter.WriteLine(horizontalSplitter.ToString());
@@ -355,5 +482,37 @@ namespace Rocket.RDVQA.Tools.ODBC
             return buffer.ToString();
         }
         
+    }
+    internal class TaskQueue
+    {
+        private SemaphoreSlim semaphore;
+        public TaskQueue()
+        {
+            semaphore = new SemaphoreSlim(1);
+        }
+        public async Task<T> Enqueue<T>(Func<Task<T>> taskExecutor)
+        {
+            await semaphore.WaitAsync();
+            try
+            {
+                return await taskExecutor();
+            }
+            finally
+            {
+                semaphore.Release();
+            }
+        }
+        public async Task Enqueue(Func<Task> taskExecutor)
+        {
+            await semaphore.WaitAsync();
+            try
+            {
+                await taskExecutor();
+            }
+            finally
+            {
+                semaphore.Release();
+            }
+        }
     }
 }

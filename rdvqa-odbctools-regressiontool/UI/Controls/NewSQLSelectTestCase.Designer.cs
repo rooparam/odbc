@@ -219,6 +219,7 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             this.cmbTestSuites.Name = "cmbTestSuites";
             this.cmbTestSuites.Size = new System.Drawing.Size(288, 23);
             this.cmbTestSuites.TabIndex = 33;
+            this.cmbTestSuites.Text = "DEFAULT";
             // 
             // btnNewDataSource
             // 

@@ -17,8 +17,7 @@ namespace Rocket.RDVQA.Tools.Core.Data
         public string Tags { get; private set; } 
         public int ConnectionID { get; private set; }
         public string ConnectionString { get; private set; }
-        public string Hash { get; set; }
-
+        public string Hash { get; set; }        
         public SQLDeSelectTestCase(string sql, int dstypeId, string tags, int connectionId, string connectionString)
         {
             SQL = sql;
@@ -26,6 +25,7 @@ namespace Rocket.RDVQA.Tools.Core.Data
             Tags = tags;
             ConnectionID = connectionId;
             ConnectionString = connectionString;
+
         }
     }
 }

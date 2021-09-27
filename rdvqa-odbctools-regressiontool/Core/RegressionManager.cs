@@ -275,7 +275,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                             try
                             {
                                 // build connection
-                                using OdbcConnection odbcCONN = new OdbcConnection(testSuite.ConnectionString);
+                                using OdbcConnection odbcCONN = new OdbcConnection(testSuite.ConnectionString[0]);
                                 // open connection
                                 odbcCONN.Open();
                                 foreach (SQLTestCase testCase in testSuite.TestCases)
@@ -298,7 +298,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                                                 if (testCase.TestCaseType == SQLTestCaseType.INSERT ||
                                                     testCase.TestCaseType == SQLTestCaseType.DELETE)
                                                 {
-                                                    odbcCMD = new OdbcCommand(testCase.VerficationQuery, odbcCONN);
+                                                    odbcCMD = new OdbcCommand(testCase.VerificationQuery, odbcCONN);
                                                     _ = odbcCMD.ExecuteNonQuery();
                                                 }
                                                 new OdbcDataAdapter(odbcCMD).Fill(resultSet);

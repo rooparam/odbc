@@ -13,15 +13,37 @@ namespace Rocket.RDVQA.Tools.Core.Components
             ID = id;
             Hash = hash;
             Query = query;
-            VerficationQuery = verificationQuery;
+            VerificationQuery = verificationQuery;
             TestCaseType = type;
             IsEnabled = true;
         }
-        public string ID { get; }
-        public string Hash { get; }
+        public SQLTestCase(string id, string query)
+        {
+            ID = id;
+            Query = query;
+            VerificationQuery = "";
+            TestCaseType = SQLTestCase.GetType(query.Trim('(').Split(' ')[0]);
+        }
+        public string ID { get; set; }
+        public string Hash { get; set; }
         public string Query { get; }
-        public string VerficationQuery { get; }
+        public string VerificationQuery { get; }
         public SQLTestCaseType TestCaseType { get; }
         public bool IsEnabled { get; set; }
+
+        public static SQLTestCaseType GetType(string keyword)
+        {
+            return keyword.ToLower() switch
+            {
+                "select" => SQLTestCaseType.SELECT,
+                "insert" => SQLTestCaseType.INSERT,
+                "delete" => SQLTestCaseType.DELETE,
+                "update" => SQLTestCaseType.UPDATE,
+                "set" => SQLTestCaseType.CONFIG,
+                _ => SQLTestCaseType.OTHER
+            };
+        }
+        override public string ToString()
+        { return ID + ";" + TestCaseType.ToString() + ";" + Hash + ";" + Query.Trim(';') + ";" + VerificationQuery.Trim(';') + ";"; }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading;
 
 
 using Rocket.RDVQA.Tools.Core.Data;
+using Rocket.RDVQA.Tools.Core;
 
 namespace Rocket.RDVQA.Tools.UI.Controls
 {
@@ -22,9 +23,9 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             ///
             /// Initialize datasource for cmbConnections
             /// 
-            cmbConnections.DataSource = DBManager.DataTables.DTConnections;
-            cmbConnections.DisplayMember = "Name";
-            cmbConnections.ValueMember = "Connection_String";
+            //cmbConnections.DataSource = ApplicationDBManager.RDVQADB.DTConnections;
+            //cmbConnections.DisplayMember = "Name";
+            //cmbConnections.ValueMember = "Connection_String";
         }
 
         private void btnBrowseSource_Click(object sender, EventArgs e)
@@ -51,7 +52,20 @@ namespace Rocket.RDVQA.Tools.UI.Controls
         private void BaseLineInputDataCollectionTask()
         {
             string filePath = txtSQLSource.Text;
-            MessageBox.Show(filePath);
+            //MessageBox.Show(filePath);
+        }
+
+        private void btnBuildBaseline_Click(object sender, EventArgs e)
+        {
+            btnBuildBaseline.Enabled = false;                    
+            NewBaselineBuilder baselineBuilder = new NewBaselineBuilder(txtConnectionString.Lines, txtSQLSource.Text, txtBaselineDest.Text);
+            baselineBuilder.BuildBaseline();
+            btnBuildBaseline.Enabled = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.ParentForm.Text);
         }
     }
 }

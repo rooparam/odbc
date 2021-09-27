@@ -4,10 +4,16 @@
     <_LastSelectedProfileId>C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="UI\Controls\BaselineBuilder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UI\Controls\BaselineBuilderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UI\Controls\NewSQLSelectTestCase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UI\Controls\SimpleQueryExecutor.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UI\Controls\SuiteSelectionControl.cs">
@@ -23,6 +29,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UI\Forms\NewTestSuite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Forms\ODBCToolsMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UI\Forms\RDVQAToolMainForm.cs">

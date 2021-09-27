@@ -69,8 +69,10 @@ namespace Rocket.RDVQA.Tools.UI.Controls
             DataSet ds = new DataSet();
             txtLog.Clear();
             txtResults.Clear();
+            string testSuite = cmbTestSuites.Text;
             Task task = Task.Factory.StartNew(() => {
-                ds = queryManager.ExecuteBatchSelect(candTestCases);
+                ds = queryManager.ExecuteBatchSelect(testSuite, connectionString, candTestCases);
+                //ds = queryManager.ExecuteBatchSelectUsingDataReader(candTestCases);
                 ToggleExecutionStatus("Test Queries");
             });         
         }

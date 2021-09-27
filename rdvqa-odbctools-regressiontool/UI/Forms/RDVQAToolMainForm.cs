@@ -76,5 +76,14 @@ namespace Rocket.RDVQA.Tools.UI.Forms
         {
             Rocket.RDVQA.Tools.Core.Data.DBManager.RefreshTables();
         }
+
+        private void baselineBuilderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BaselineBuilder baselineBuilder = new BaselineBuilder();
+            baselineBuilder.Dock = DockStyle.Fill;
+            int pageCount = this.MainContainer.TabPages.Count;
+            this.MainContainer.TabPages.Add("Baseline Builder Tool");
+            this.MainContainer.TabPages[pageCount].Controls.Add(baselineBuilder);
+        }
     }
 }

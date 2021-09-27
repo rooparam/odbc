@@ -40,12 +40,13 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.menuBaselineBuilderBatch = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTableViewer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAddTCSQLDESelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.MainContainer = new System.Windows.Forms.TabControl();
-            this.refreshTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.baselineBuilderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mstrpMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +68,8 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.menuNewTestCase,
             this.menuNewBatchTestCase,
             this.menuNewTestSuite,
-            this.menuNewRegressionSuite});
+            this.menuNewRegressionSuite,
+            this.baselineBuilderToolStripMenuItem});
             this.menuNew.Name = "menuNew";
             this.menuNew.Size = new System.Drawing.Size(43, 20);
             this.menuNew.Text = "New";
@@ -75,26 +77,26 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             // menuNewTestCase
             // 
             this.menuNewTestCase.Name = "menuNewTestCase";
-            this.menuNewTestCase.Size = new System.Drawing.Size(157, 22);
+            this.menuNewTestCase.Size = new System.Drawing.Size(180, 22);
             this.menuNewTestCase.Text = "Test Case";
             // 
             // menuNewBatchTestCase
             // 
             this.menuNewBatchTestCase.Name = "menuNewBatchTestCase";
-            this.menuNewBatchTestCase.Size = new System.Drawing.Size(157, 22);
+            this.menuNewBatchTestCase.Size = new System.Drawing.Size(180, 22);
             this.menuNewBatchTestCase.Text = "Batch Test Case";
             // 
             // menuNewTestSuite
             // 
             this.menuNewTestSuite.Name = "menuNewTestSuite";
-            this.menuNewTestSuite.Size = new System.Drawing.Size(157, 22);
+            this.menuNewTestSuite.Size = new System.Drawing.Size(180, 22);
             this.menuNewTestSuite.Text = "Test Suite";
             this.menuNewTestSuite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // menuNewRegressionSuite
             // 
             this.menuNewRegressionSuite.Name = "menuNewRegressionSuite";
-            this.menuNewRegressionSuite.Size = new System.Drawing.Size(157, 22);
+            this.menuNewRegressionSuite.Size = new System.Drawing.Size(180, 22);
             this.menuNewRegressionSuite.Text = "RegressionSuite";
             // 
             // menuTools
@@ -136,6 +138,13 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.menuAddTCSQLDESelect.Size = new System.Drawing.Size(238, 22);
             this.menuAddTCSQLDESelect.Text = "Add SQLDirectExec TCs (Select)";
             this.menuAddTCSQLDESelect.Click += new System.EventHandler(this.menuAddTCSQLDESelect_Click);
+            // 
+            // refreshTablesToolStripMenuItem
+            // 
+            this.refreshTablesToolStripMenuItem.Name = "refreshTablesToolStripMenuItem";
+            this.refreshTablesToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.refreshTablesToolStripMenuItem.Text = "Refresh Tables";
+            this.refreshTablesToolStripMenuItem.Click += new System.EventHandler(this.refreshTablesToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -187,12 +196,12 @@ namespace Rocket.RDVQA.Tools.UI.Forms
             this.MainContainer.Size = new System.Drawing.Size(1237, 815);
             this.MainContainer.TabIndex = 3;
             // 
-            // refreshTablesToolStripMenuItem
+            // baselineBuilderToolStripMenuItem
             // 
-            this.refreshTablesToolStripMenuItem.Name = "refreshTablesToolStripMenuItem";
-            this.refreshTablesToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.refreshTablesToolStripMenuItem.Text = "Refresh Tables";
-            this.refreshTablesToolStripMenuItem.Click += new System.EventHandler(this.refreshTablesToolStripMenuItem_Click);
+            this.baselineBuilderToolStripMenuItem.Name = "baselineBuilderToolStripMenuItem";
+            this.baselineBuilderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.baselineBuilderToolStripMenuItem.Text = "Baseline Builder";
+            this.baselineBuilderToolStripMenuItem.Click += new System.EventHandler(this.baselineBuilderToolStripMenuItem_Click);
             // 
             // RDVQAToolMainForm
             // 
@@ -233,5 +242,6 @@ namespace Rocket.RDVQA.Tools.UI.Forms
         private System.Windows.Forms.ToolStripMenuItem menuTableViewer;
         private System.Windows.Forms.ToolStripMenuItem menuAddTCSQLDESelect;
         private System.Windows.Forms.ToolStripMenuItem refreshTablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baselineBuilderToolStripMenuItem;
     }
 }
