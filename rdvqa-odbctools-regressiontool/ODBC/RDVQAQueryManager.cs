@@ -448,7 +448,15 @@ namespace Rocket.RDVQA.Tools.ODBC
                         }
                         else if (c.DataType == Type.GetType("System.DateTime"))
                         {
-                            rowData.Append(" " + ((DateTime)r[c]).ToString("yyyy-MM-dd HH:mm:ss.ffffff").PadLeft(columnWidth[idx++]) + " |");
+                            // check if date timer is null
+                            if (r[c] == DBNull.Value)
+                            {
+                                rowData.Append(" " + ("").PadLeft(columnWidth[idx++]) + " |");
+                            }
+                            else
+                            {
+                                rowData.Append(" " + ((DateTime)r[c]).ToString("yyyy-MM-dd HH:mm:ss.ffffff").PadLeft(columnWidth[idx++]) + " |");
+                            }
                         }
                         else
                         {

@@ -147,4 +147,4 @@ C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regression
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\rdvqa-odbctools-regressiontool.csproj.AssemblyReference.cache
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\Rocket.RDVQA.Tools.UI.Controls.SimpleQueryExecutor.resources
 C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\Rocket.RDVQA.Tools.UI.Forms.ODBCToolsMainForm.resources
-C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\Rocket.RDVQA.Tools.UI.Controls.BaselineBuilder.resources
+C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressiontool\obj\Debug\net5.0-windows\Rocket.RDVQA.Tools.UI.Controls.delete.resources

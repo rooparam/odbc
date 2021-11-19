@@ -10,6 +10,7 @@ using System.Xml.Schema;
 using Rocket.RDVQA.Tools.Report;
 using Rocket.RDVQA.Utils;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace Rocket.RDVQA.Tools.ODBC
 {
@@ -137,7 +138,7 @@ namespace Rocket.RDVQA.Tools.ODBC
     }
     internal class TestSuiteExecutionRecord
     {
-        private List<TestCaseExecutionRecord> TestCaseExecutionRecords;
+        public  List<TestCaseExecutionRecord> TestCaseExecutionRecords { get; private set; }
 
         public TestSuiteExecutionRecord(string suiteName)
         {
@@ -173,6 +174,7 @@ namespace Rocket.RDVQA.Tools.ODBC
     }
     internal class RegressionSuiteExecutionRecord
     {
+
         public RegressionSuiteExecutionRecord(string suiteName)
         {
             TestSuiteExecutionRecords = new List<TestSuiteExecutionRecord>();
@@ -213,6 +215,8 @@ namespace Rocket.RDVQA.Tools.ODBC
     {
         private List<RegressionSuite> RegressionSuites;
         private List<RegressionSuiteExecutionRecord> RegressionSuiteExecutionRecords;
+        private bool _regressionSuccess = true;
+
         public RegressionManager()
         {
             RegressionSuiteExecutionRecords = new List<RegressionSuiteExecutionRecord>();
@@ -222,16 +226,18 @@ namespace Rocket.RDVQA.Tools.ODBC
         /// 
         /// </summary>
         /// <param name="configXML"></param>
-        public void StartRegression(string configXML)
+        public bool StartRegression(string configXML, List<string> tcExcludePatterns, List<string> tsExcludePatterns)
         {
             ValidateConfigXML(configXML);
             BuildRegressionSuites(configXML);
-            RunRegression();
+            RunRegression(tcExcludePatterns, tsExcludePatterns);
             BuildRegressionReport();
+            return _regressionSuccess;
         }
 
         private void BuildRegressionReport()
         {
+            int totalTCs = 0, totalPassedTCs = 0;
             ConsoleTableOptions consoleTableOptions = new ConsoleTableOptions();
             consoleTableOptions.Columns = new List<String>() { "Test Suite Name", "Total TCs", "Pass TCs", "Fail TCs"};
             consoleTableOptions.EnableCount = false;
@@ -257,14 +263,33 @@ namespace Rocket.RDVQA.Tools.ODBC
                 {
                     int tcCount = tseRecord.TestCaseCount();
                     int passCount = tseRecord.PassTCCount();
+                    totalTCs += tcCount;
+                    totalPassedTCs += passCount;
                     table.AddRow(tseRecord.Name, tcCount.ToString("D4"), passCount.ToString("D4"), (tcCount - passCount).ToString("D4"));
                 }
+                table.AddRow("TOTAL", totalTCs.ToString("D8"), totalPassedTCs.ToString("D8"), (totalTCs - totalPassedTCs).ToString("D8"));
                 table.Write();
-
                 Console.WriteLine(new String('-', 60));
-
-
             }
+            Console.WriteLine("\n\n");
+            Console.WriteLine("Failed TCs");
+            //FIXME:
+            //foreach(RegressionSuiteExecutionRecord rse in RegressionSuiteExecutionRecords)
+            //{
+            //    foreach(TestSuiteExecutionRecord tse in rse.TestSuiteExecutionRecords)
+            //    {
+            //        foreach(TestCaseExecutionRecord tce in tse.TestCaseExecutionRecords)
+            //        {
+            //            if(!tce.Pass)
+            //            {
+            //                //tce.
+            //                //TODO: implement detailed reporting
+            //                //FIXME:
+
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void BuildRegressionSuites(string configXML)
@@ -300,8 +325,8 @@ namespace Rocket.RDVQA.Tools.ODBC
                         {
                             if (input is null || output is null)
                             {
-                                Console.WriteLine("[ Error ] Atleast one subnode of <environment> is empty.");
-                                Console.WriteLine("[ Info  ] None of the <environment> subnodes are nullable. ");
+                                Console.WriteLine("[ ERROR   ] Atleast one subnode of <environment> is empty.");
+                                Console.WriteLine("[ INFO    ] None of the <environment> subnodes are nullable. ");
                                 return;
                             }
                             else
@@ -319,7 +344,7 @@ namespace Rocket.RDVQA.Tools.ODBC
                                 }
                                 else
                                 {
-                                    Console.WriteLine("[ Error   ] Input path '{0}' not found.", input);
+                                    Console.WriteLine("[ ERROR   ] Input path '{0}' not found.", input);
                                 }
                             }
                         }
@@ -357,8 +382,8 @@ namespace Rocket.RDVQA.Tools.ODBC
             {
                 if (type == XmlSeverityType.Error)
                 {
-                    Console.WriteLine("[ Error ] Invalid XML format.");
-                    Console.WriteLine("[ Info  ] " + e.Message);
+                    Console.WriteLine("[ ERROR   ] Invalid XML format.");
+                    Console.WriteLine("[ INFO    ] " + e.Message);
                     Environment.Exit(5);
                 }
             }
@@ -368,27 +393,58 @@ namespace Rocket.RDVQA.Tools.ODBC
         /// <summary>
         /// 
         /// </summary>
-        private void RunRegression()
+        private void RunRegression(List<string> tcExcludePatterns, List<string> tsExcludePatterns)
         {
+
             string ExecutionMessage = "";
             foreach (RegressionSuite regressionSuite in RegressionSuites)
             {
                 RegressionSuiteExecutionRecord rseRecord = new RegressionSuiteExecutionRecord(regressionSuite.Name);
-                Console.WriteLine("[ Info    ] Execution begins for Regression Suite: {0}.", regressionSuite.Name);
+                Console.WriteLine("[ INFO    ] Execution begins for Regression Suite: {0}.", regressionSuite.Name);
                 foreach (TestSuite testSuite in regressionSuite.GetTestSuites())
                 {
+                    bool skipTS = false;
+                    foreach(string pattern in tsExcludePatterns)
+                    {
+                        if(new Regex(pattern).IsMatch(testSuite.Name))
+                        {
+                            skipTS = true;
+                            break;
+                        }
+                    }
+                    if(skipTS)
+                    {
+                        Console.WriteLine("[ INFO    ] Skipping Test Suite: {0}.", testSuite.Name);
+                        continue;
+                    }
                     // create test suite execution record
                     TestSuiteExecutionRecord tseRecord = new TestSuiteExecutionRecord(testSuite.Name);
                     rseRecord.AddTestSuiteExecutionRecord(tseRecord);
-                    Console.WriteLine("[ Info    ] Execution begins for Test Suite: {0}.", testSuite.Name);
+                    Console.WriteLine("[ INFO    ] Execution begins for Test Suite: {0}.", testSuite.Name);
                     try
                     {
+                        Console.WriteLine("[ INFO    ] Using : "+ testSuite.ConnectionString);
                         // build connection
                         using OdbcConnection odbcCONN = new OdbcConnection(testSuite.ConnectionString);
                         // open connection
                         odbcCONN.Open();
                         foreach (SQLTestCase testCase in testSuite.TestCases)
                         {
+
+                            bool skipTC = false;
+                            foreach (string pattern in tcExcludePatterns)
+                            {
+                                if (new Regex(pattern).IsMatch(testCase.ID))
+                                {
+                                    skipTC = true;
+                                    break;
+                                }
+                            }
+                            if (skipTC)
+                            {
+                                Console.WriteLine("[ WARNING ] Skipping Test Case: {0}.", testCase.ID);
+                                continue;
+                            }
                             //
                             TestCaseExecutionRecord tceRecord = new TestCaseExecutionRecord(testCase.ID, "Testing Commenced", false);
                             tseRecord.AddTestCaseExecutionRecord(tceRecord);
@@ -440,7 +496,9 @@ namespace Rocket.RDVQA.Tools.ODBC
                                 {
                                     //TestExecutionResult.Add(new SQLTestResults(testCase.ID, false, "Hash mismatch"));
                                     Console.Error.WriteLine(testCase.ID + " FAIL '" + testCase.Hash + "' != '" + hash + "'");
+                                    Console.Error.WriteLine(testCase.ID + " : '" + testCase.Query);
                                     //CountFail++;
+                                    _regressionSuccess = false;
                                     tceRecord.Comment = "Execution Fail. Hash mismatch";
                                 }
                                 
@@ -451,8 +509,8 @@ namespace Rocket.RDVQA.Tools.ODBC
                             catch (Exception ex)
                             {
                                 //TestExecutionResult.Add(new SQLTestResults(testCase.ID, false, e.Message));
-                                Console.WriteLine("[ ERROR ] Exception caught. Test execution will continue.");
-                                Console.WriteLine("[ INFO  ] " + ex.Message);
+                                Console.WriteLine("[ ERROR   ]Exception caught. Test execution will continue.");
+                                Console.WriteLine("[ INFO    ] " + ex.Message);
                                 tceRecord.Comment = "Execution ended with exception: " + ex.Message;
                             }
                         }
@@ -460,8 +518,8 @@ namespace Rocket.RDVQA.Tools.ODBC
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("[ Error   ] "+ ex.Message);
-                        Console.WriteLine("[ Error   ] "+ ex.StackTrace);
+                        Console.WriteLine("[ ERROR   ] " + ex.Message);
+                        Console.WriteLine("[ ERROR   ] "+ ex.StackTrace);
                         tseRecord.Comment = "Testcase execution interrupted by exception: " + ex.Message;
                     }
                 }

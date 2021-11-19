@@ -79,7 +79,7 @@ namespace Rocket.RDVQA.Tools.UI.Forms
 
         private void baselineBuilderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BaselineBuilder baselineBuilder = new BaselineBuilder();
+            BaselineBuilderControl baselineBuilder = new BaselineBuilderControl();
             baselineBuilder.Dock = DockStyle.Fill;
             int pageCount = this.MainContainer.TabPages.Count;
             this.MainContainer.TabPages.Add("Baseline Builder Tool");

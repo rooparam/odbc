@@ -34,6 +34,7 @@ namespace Rocket.RDVQA.Tools.UI.Forms
         private void btnAddConnection_Click(object sender, EventArgs e)
         {
             DataTable dt = TableManager.RDVQADBTables.DTConnections();
+            
             if(chkKeyStore.Checked)
             {
 

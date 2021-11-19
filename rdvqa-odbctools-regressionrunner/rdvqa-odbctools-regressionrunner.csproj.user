@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_LastSelectedProfileId>C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\Properties\PublishProfiles\regressionrunner %28x64%29.pubxml</_LastSelectedProfileId>
+    <_LastSelectedProfileId>C:\Users\skrishna\source\repos\rdvqa-odbctools-dotnet\rdvqa-odbctools-regressionrunner\Properties\PublishProfiles\regressionrunner %28x86%29.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
     <None Update="testconfig.xsd">
