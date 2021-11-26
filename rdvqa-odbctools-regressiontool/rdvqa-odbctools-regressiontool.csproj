@@ -7,7 +7,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <StartupObject>Rocket.RDVQA.Tools.ODBC.Program</StartupObject>
     <Configurations>Debug;Release;x86</Configurations>
-    <Platforms>AnyCPU;x86</Platforms>
+    <Platforms>AnyCPU;x86;x64</Platforms>
+    <Version>1.0.111</Version>
+    <Authors>Shahin Ram Krishna</Authors>
+    <Company>Rocket Software Development India Pvt Ltd</Company>
+    <PackageLicenseExpression>Internal</PackageLicenseExpression>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>

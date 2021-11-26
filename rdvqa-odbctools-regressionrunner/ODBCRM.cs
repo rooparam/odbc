@@ -60,7 +60,8 @@ namespace Rocket.RDVQA.Tools.ODBC
                             {
                                 if (!File.Exists(ConfigXML))
                                 {
-                                    Console.WriteLine("[ Error ] Configuration XML doesn't exist.");
+                                    Console.WriteLine("[ ERROR  ] Configuration XML doesn't exist.");
+                                    Console.WriteLine("[ INFO   ] Configuration XML:" + ConfigXML);
                                     Environment.Exit(4);
                                 }
                             }
